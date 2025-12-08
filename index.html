@@ -8,11 +8,31 @@
     name="description"
     content="SuppGuide helps beginners pick budget-friendly supplements that actually work. Honest reviews of creatine, protein powder, and basic stacks."
   />
-  <style>
 .site-header {
-  background: linear-gradient(135deg, #1e40af, #0f172a);
-  padding: 80px 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgb(37, 99, 235),
+      rgb(79, 70, 229)
+    );
+  padding: 72px 24px 64px;
   text-align: center;
+  color: white;
+}
+
+.site-header h1 {
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+}
+
+.site-header p {
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.9);
+}
+
 }
 
 .site-header h1 {
@@ -311,7 +331,7 @@
       border: 1px solid rgba(16, 185, 129, 0.55);
     }
 
-    .card-body {
+    .card- {
       font-size: 12px;
       color: var(--text-soft);
       line-height: 1.5;
@@ -440,7 +460,7 @@
     }
   </style>
 </head>
-<body>
+<>
   <div class="page">
     <!-- NAVBAR -->
     <header class="nav">
@@ -513,7 +533,7 @@
             <h3 class="card-title">Creatine Monohydrate</h3>
             <span class="card-badge">#1 priority</span>
           </div>
-          <p class="card-body">
+          <p class="card-">
             Safest, most researched supplement for strength &amp; performance.
             Go for a pure, flavored or unflavored creatine monohydrate – no
             crazy blends needed.
@@ -533,7 +553,7 @@
             <h3 class="card-title">Whey / Protein Powder</h3>
             <span class="card-badge" style="background: rgba(59,130,246,.15); border-color: rgba(59,130,246,.7); color:#bfdbfe;">support</span>
           </div>
-          <p class="card-body">
+          <p class="card-">
             Food first – but a simple whey or plant protein helps you hit your
             daily protein target when you don’t have time to cook.
           </p>
@@ -552,7 +572,7 @@
             <h3 class="card-title">Basic Health Stack</h3>
             <span class="card-badge" style="background: rgba(234,179,8,.12); border-color: rgba(234,179,8,.7); color:#facc15;">optional</span>
           </div>
-          <p class="card-body">
+          <p class="card-">
             Simple additions like vitamin D, omega-3 and magnesium can support
             overall health – but they come <strong>after</strong> sleep, food and training.
           </p>
@@ -621,5 +641,5 @@
     // dynamic year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-</body>
+</>
 </html>
