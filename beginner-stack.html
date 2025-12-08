@@ -1,876 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Beginner Guide | SuppGuide</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Beginner-friendly guide to protein, creatine and basic supplements. Learn what to buy, how to use and what to avoid."
-  />
-  <style>
-    :root {
-      --bg: #f5f5f7;
-      --card: #ffffff;
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.09);
-      --border-subtle: rgba(15, 23, 42, 0.08);
-      --text-main: #0f172a;
-      --text-muted: #6b7280;
-      --radius-xl: 18px;
-      --radius-2xl: 24px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #e5f0ff 0, #f5f5f7 45%, #f5f5f7 100%);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 24px 24px 56px;
-    }
-
-    /* NAVBAR */
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-      backdrop-filter: blur(18px);
-      position: sticky;
-      top: 14px;
-      z-index: 10;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-dot {
-      width: 26px;
-      height: 26px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 20% 0, #bfdbfe 0, #3b82f6 40%, #1d4ed8 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.65);
-    }
-
-    .logo-text-main {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 15px;
-    }
-
-    .logo-text-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 13px;
-    }
-
-    .nav-link {
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--text-muted);
-    }
-
-    .nav-link.active {
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-pill {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.08);
-      color: #16a34a;
-      border: 1px solid rgba(22, 163, 74, 0.35);
-    }
-
-    .btn-small {
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #0f172a;
-      color: white;
-    }
-
-    .btn-small span {
-      font-size: 14px;
-    }
-
-    /* PAGE LAYOUT */
-
-    .page {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 960px) {
-      .nav {
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-      }
-
-      .page {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .shell {
-        padding: 12px 12px 32px;
-      }
-      .nav {
-        padding: 10px 12px;
-      }
-    }
-
-    /* LEFT COLUMN */
-
-    .page-header {
-      background: radial-gradient(circle at top left, #dbeafe 0, #ffffff 45%, #ffffff 100%);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--border-subtle);
-      padding: 22px 22px 20px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .page-kicker-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
-    }
-
-    .page-title {
-      font-size: clamp(26px, 3vw, 32px);
-      letter-spacing: -0.03em;
-      font-weight: 750;
-      margin-bottom: 8px;
-    }
-
-    .page-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 560px;
-    }
-
-    .breadcrumb {
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .breadcrumb span.current {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .page-badges {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .page-badge {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.03);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .page-badge strong {
-      font-weight: 600;
-    }
-
-    .page-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.28);
-    }
-
-    .page-grid {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 960px) {
-      .page-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      padding: 18px 18px 16px;
-    }
-
-    .card-title-sm {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .card h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .checklist {
-      list-style: none;
-      margin-top: 8px;
-      display: grid;
-      gap: 6px;
-    }
-
-    .checklist li {
-      font-size: 13px;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      color: var(--text-main);
-    }
-
-    .check-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: #16a34a;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.16);
-      color: #475569;
-    }
-
-    /* SUPPLEMENT CARDS */
-
-    .supp-grid {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    @media (max-width: 960px) {
-      .supp-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .supp-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .supp-card {
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.96);
-      padding: 12px 12px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .supp-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-    }
-
-    .supp-name {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .supp-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .supp-pill {
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(59, 130, 246, 0.06);
-      color: #2563eb;
-    }
-
-    .supp-note {
-      font-size: 11px;
-      color: #4b5563;
-    }
-
-    /* STEP SECTION */
-
-    .steps-card {
-      margin-top: 18px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at top left, #eff6ff 0, #ffffff 50%);
-      padding: 16px 16px 14px;
-    }
-
-    .steps-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .steps-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .steps {
-      display: grid;
-      gap: 6px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: #0f172a;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    .step-main {
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .step-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* RIGHT COLUMN – QUICK FAQ */
-
-    .side-card {
-      background: rgba(15, 23, 42, 0.96);
-      color: rgba(248, 250, 252, 0.98);
-      border-radius: var(--radius-2xl);
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      box-shadow: var(--shadow-soft);
-      position: sticky;
-      top: 90px;
-    }
-
-    .side-kicker {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-
-    .side-title {
-      font-size: 17px;
-      font-weight: 650;
-      margin-bottom: 4px;
-    }
-
-    .side-sub {
-      font-size: 12px;
-      color: #9ca3af;
-      margin-bottom: 12px;
-    }
-
-    .faq {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .faq-item {
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 10px 10px 9px;
-    }
-
-    .faq-q {
-      font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 4px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .faq-q span {
-      font-size: 16px;
-      opacity: 0.7;
-    }
-
-    .faq-a {
-      font-size: 11px;
-      color: #d1d5db;
-    }
-
-    .side-footer {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .btn-outline {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: transparent;
-      color: #e5e7eb;
-      padding: 6px 12px;
-      font-size: 11px;
-      cursor: pointer;
-    }
-
-    footer {
-      margin-top: 32px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    footer a {
-      font-weight: 500;
-      color: #4b5563;
-    }
-  </style>
-</head>
-<body>
-  <div class="shell">
-    <!-- NAVBAR -->
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="logo-dot">S</div>
-        <div>
-          <div class="logo-text-main">SuppGuide</div>
-          <div class="logo-text-sub">Smart supplement decisions</div>
+<main class="shell">
+
+  <!-- SAYFA BAŞLIĞI -->
+  <section class="page-hero">
+    <p class="page-eyebrow">Beginner guide</p>
+    <h1 class="page-title">Start smart with a simple supplement stack.</h1>
+    <p class="page-subtitle">
+      You don’t need 10 different products.  
+      This beginner stack covers the basics for strength, recovery, and overall health.
+    </p>
+
+    <div class="page-hero-cta">
+      <a href="#stack" class="btn-primary">See recommended stack</a>
+      <a href="index.html" class="btn-ghost">Back to home</a>
+    </div>
+  </section>
+
+  <!-- RECOMMENDED STACK -->
+  <section id="stack" class="stack-section">
+    <h2 class="section-title">Recommended beginner stack</h2>
+    <p class="section-subtitle">
+      These 3 supplements are usually enough for most beginners when diet and sleep are on point.
+    </p>
+
+    <div class="stack-grid">
+
+      <!-- 1. Creatine -->
+      <article class="stack-card">
+        <h3 class="stack-name">Creatine Monohydrate</h3>
+        <p class="stack-tag">#1 priority • strength & power</p>
+        <ul class="stack-points">
+          <li>Most researched supplement for strength & performance.</li>
+          <li>5 g per day, every day, timing doesn’t really matter.</li>
+          <li>Look for plain creatine monohydrate with no extra fillers.</li>
+        </ul>
+        <div class="stack-meta">
+          <span>Daily dose:</span>
+          <strong>3–5 g</strong>
         </div>
-      </div>
-      <div class="nav-links">
-        <a href="/" class="nav-link">Home</a>
-        <a href="#" class="nav-link active">Beginner Guide</a>
-        <a href="#" class="nav-link">Product Reviews</a>
-        <a href="#" class="nav-link">Blog</a>
-      </div>
-      <div class="nav-cta">
-        <div class="nav-pill">100% unbiased · No paid hype</div>
-        <button class="btn-small">
-          Free starter checklist
-          <span>↗</span>
-        </button>
-      </div>
-    </nav>
+      </article>
 
-    <!-- PAGE CONTENT -->
-    <main class="page">
-      <!-- LEFT -->
-      <section>
-        <header class="page-header">
-          <div class="page-kicker">
-            <span class="page-kicker-dot"></span>
-            START HERE
-          </div>
-          <h1 class="page-title">Beginner’s Guide to Supplements</h1>
-          <p class="page-sub">
-            New to protein, creatine or pre–workouts? This page walks you through what
-            you actually need, how to dose it, and how not to get scammed by flashy labels.
-          </p>
-
-          <div class="breadcrumb">
-            <span>SuppGuide</span>
-            <span>›</span>
-            <span>Guides</span>
-            <span>›</span>
-            <span class="current">Beginner</span>
-          </div>
-
-          <div class="page-badges">
-            <div class="page-badge">
-              <span class="page-badge-dot"></span>
-              <strong>Safe use</strong> · basic health first
-            </div>
-            <div class="page-badge">
-              <span class="page-badge-dot"></span>
-              <strong>No brand sponsorship</strong> · neutral advice
-            </div>
-            <div class="page-badge">
-              <span class="page-badge-dot"></span>
-              Works for <strong>gym · home · esports</strong>
-            </div>
-          </div>
-
-          <div class="page-grid">
-            <div class="card">
-              <div class="card-title-sm">Before you buy anything</div>
-              <h2>3 quick checks you should always do</h2>
-              <p>
-                Every supplement on your shelf should pass these basic checks. If
-                a product fails one of them, you probably don’t need it.
-              </p>
-              <ul class="checklist">
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <strong>Is the basic nutrition okay?</strong><br />
-                    Enough protein, sleep and water will always matter more than any powder.
-                  </div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <strong>Can you explain what it does in one sentence?</strong><br />
-                    If you can’t explain it, you shouldn’t pay for it.
-                  </div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <strong>Is the dose realistic?</strong><br />
-                    Many “pro” blends hide tiny doses in big labels. Dose matters
-                    more than the design.
-                  </div>
-                </li>
-              </ul>
-
-              <div class="tag-row">
-                <span class="tag">Beginner level</span>
-                <span class="tag">No medical claims</span>
-                <span class="tag">Science–friendly</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-title-sm">Safe starting point</div>
-              <h2>Your first stack (for most people)</h2>
-              <p>
-                For healthy adults, these three are usually enough for a long time:
-              </p>
-              <ul class="checklist">
-                <li>
-                  <div class="check-icon">1</div>
-                  <div><strong>Protein powder</strong> – only if you can’t hit your protein from food.</div>
-                </li>
-                <li>
-                  <div class="check-icon">2</div>
-                  <div><strong>Creatine monohydrate</strong> – cheap, studied, no drama.</div>
-                </li>
-                <li>
-                  <div class="check-icon">3</div>
-                  <div><strong>Caffeine</strong> – from coffee or a simple pre–workout, not 12 ingredients.</div>
-                </li>
-              </ul>
-              <p style="font-size:11px; color:var(--text-muted); margin-top:6px;">
-                Have any medical condition or medication? Talk to a doctor first. A
-                website can’t replace that.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <!-- SUPPLEMENT CARDS -->
-        <section class="card" style="margin-top: 20px;">
-          <div class="card-title-sm">The “big three” explained</div>
-          <h2>Protein, creatine & pre–workout in 20 seconds each</h2>
-          <p>
-            Here is what each one actually does, how to use it and when you can
-            completely skip it.
-          </p>
-
-          <div class="supp-grid">
-            <article class="supp-card">
-              <div class="supp-label">Protein powder</div>
-              <div class="supp-name">Just a convenient food, not magic</div>
-              <div class="supp-meta">
-                <span>Goal: muscle gain / fat loss</span>
-                <span class="supp-pill">Start: 1 scoop / day</span>
-              </div>
-              <p class="supp-note">
-                Use it when: your daily protein from chicken, eggs, yogurt, etc.
-                is <em>not enough</em>.  
-                Skip it when: you already hit your protein target with normal food.
-              </p>
-            </article>
-
-            <article class="supp-card">
-              <div class="supp-label">Creatine monohydrate</div>
-              <div class="supp-name">The most boring but effective choice</div>
-              <div class="supp-meta">
-                <span>Goal: strength & power</span>
-                <span class="supp-pill">Dose: 3–5 g per day</span>
-              </div>
-              <p class="supp-note">
-                Same dose every day, timing is not super important.  
-                Drink enough water. No fancy “alkaline / liquid / nano” versions needed.
-              </p>
-            </article>
-
-            <article class="supp-card">
-              <div class="supp-label">Pre–workout</div>
-              <div class="supp-name">Energy boost (but watch your sleep)</div>
-              <div class="supp-meta">
-                <span>Goal: focus & pump</span>
-                <span class="supp-pill">Key: caffeine amount</span>
-              </div>
-              <p class="supp-note">
-                Check the label for caffeine per serving.  
-                Avoid huge doses at night if you care about recovery and sleep.
-              </p>
-            </article>
-          </div>
-
-          <!-- STEPS -->
-          <div class="steps-card">
-            <div class="steps-title">How to start without messing it up</div>
-            <div class="steps-sub">
-              Follow these steps in order. Don’t add 5 new supplements in one week.
-            </div>
-            <div class="steps">
-              <div class="step">
-                <div class="step-num">1</div>
-                <div>
-                  <div class="step-main">Fix your basics first</div>
-                  <div class="step-sub">
-                    Sleep, training plan and food quality will decide 80% of your
-                    results. Supplements are the last 20%.
-                  </div>
-                </div>
-              </div>
-
-              <div class="step">
-                <div class="step-num">2</div>
-                <div>
-                  <div class="step-main">Add one product at a time</div>
-                  <div class="step-sub">
-                    Start with the simplest: protein or creatine. Track how you feel
-                    for 2–3 weeks before adding anything else.
-                  </div>
-                </div>
-              </div>
-
-              <div class="step">
-                <div class="step-num">3</div>
-                <div>
-                  <div class="step-main">Keep a tiny log</div>
-                  <div class="step-sub">
-                    Write down: what you take, dose, time, and how your training and
-                    sleep feel. Super short notes are enough.
-                  </div>
-                </div>
-              </div>
-
-              <div class="step">
-                <div class="step-num">4</div>
-                <div>
-                  <div class="step-main">Review once a month</div>
-                  <div class="step-sub">
-                    If you don’t feel or see any benefit, don’t be scared to remove a
-                    product. A smaller, smarter stack saves money.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- RIGHT COLUMN -->
-      <aside class="side-card">
-        <div class="side-kicker">Quick FAQ</div>
-        <div class="side-title">Questions most beginners ask</div>
-        <div class="side-sub">
-          Short, honest answers — no extreme promises, no “take this and gain 10 kg
-          in a month” nonsense.
+      <!-- 2. Protein powder -->
+      <article class="stack-card">
+        <h3 class="stack-name">Whey / Protein Powder</h3>
+        <p class="stack-tag">Support • daily protein target</p>
+        <ul class="stack-points">
+          <li>Helps you hit your protein goal when food alone isn’t enough.</li>
+          <li>Use on busy days – not a magic muscle builder by itself.</li>
+          <li>Pick a flavor you enjoy and that sits well with your stomach.</li>
+        </ul>
+        <div class="stack-meta">
+          <span>Use:</span>
+          <strong>1–2 scoops on busy days</strong>
         </div>
+      </article>
 
-        <div class="faq">
-          <div class="faq-item">
-            <div class="faq-q">
-              Is creatine dangerous?
-              <span>?</span>
-            </div>
-            <div class="faq-a">
-              For healthy people with normal kidneys and liver, standard doses of
-              creatine monohydrate are considered safe.  
-              If you have any medical issue, ask a doctor before you start.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              Do I need a “mass gainer”?
-              <span>?</span>
-            </div>
-            <div class="faq-a">
-              Usually no. Most gainers are just carbs + protein. You can build the
-              same thing with rice, oats, milk and a normal whey.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              How many supplements is “too many”?
-              <span>?</span>
-            </div>
-            <div class="faq-a">
-              If you can’t explain what each product does and why you take it,
-              you’re already using too many. Most people are fine with 1–3 items.
-            </div>
-          </div>
+      <!-- 3. Basic health stack -->
+      <article class="stack-card">
+        <h3 class="stack-name">Basic Health Stack</h3>
+        <p class="stack-tag">Optional • overall health</p>
+        <ul class="stack-points">
+          <li>Usually includes vitamin D, omega-3, and magnesium.</li>
+          <li>Comes after sleep, food, and training are consistent.</li>
+          <li>Helps close small gaps in your daily nutrition.</li>
+        </ul>
+        <div class="stack-meta">
+          <span>Use:</span>
+          <strong>Only if bloodwork / diet suggests it</strong>
         </div>
+      </article>
 
-        <div class="side-footer">
-          <span>Next: we’ll add real products & affiliate links here.</span>
-          <button class="btn-outline">Mark as read</button>
-        </div>
-      </aside>
-    </main>
+    </div>
+  </section>
 
-    <footer>
-      <span>© SuppGuide. Educational only · not medical advice.</span>
-      <span>
-        Next step: <a href="#">Compare brands</a> · <a href="#">Build your stack</a>
-      </span>
-    </footer>
-  </div>
-</body>
-</html>
+  <!-- BASİT FAQ -->
+  <section class="faq-section">
+    <h2 class="section-title">Beginner FAQs</h2>
+    <div class="faq-grid">
+
+      <article class="faq-item">
+        <h3>Do I need all three supplements?</h3>
+        <p>
+          No. Creatine alone is already a strong start.  
+          Protein powder is just a food shortcut, and the health stack is optional.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h3>How long should I use this stack?</h3>
+        <p>
+          Think in months, not days.  
+          Focus on training, sleep, and consistent nutrition first.
+        </p>
+      </article>
+
+      <article class="faq-item">
+        <h3>Is this safe for beginners?</h3>
+        <p>
+          For healthy adults, these are some of the most researched and commonly used supplements.  
+          If you have a medical condition, always talk to your doctor first.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+</main>
