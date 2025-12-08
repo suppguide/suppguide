@@ -2,12 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beginner Guide</title>
-</head>
-<body>
-  <h1>Beginner supplement guide</h1>
-  <p>Burası beginner sayfası. Sonra burayı detaylı dolduracağız.</p>
+  <title>Beginner Supplement Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <a href="index.html">← Ana sayfaya dön</a>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 20px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin-top: 56px;
+      margin-bottom: 16px;
+      font-size: 28px;
+    }
+
+    p {
+      color: #475569;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 750px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 500;
+    }
+
+    .highlight {
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .warning {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <h1>Beginner supplement guide</h1>
+    <p>
+      New to fitness and supplements?  
+      This page shows you what you actually need — and what you should avoid wasting money on.
+    </p>
+
+    <!-- RULES -->
+    <h2>First rule: supplements are not magic</h2>
+    <div class="card">
+      <ul>
+        <li>Supplements help only if your <span class="highlight">diet and training</span> are correct.</li>
+        <li>No supplement can replace food, sleep, or consistency.</li>
+        <li>More products ≠ better results.</li>
+      </ul>
+    </div>
+
+    <!-- MUST HAVE -->
+    <h2>Supplements beginners can consider</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Protein powder</strong> – only if you can’t reach daily protein from food.</li>
+        <li><strong>Creatine</strong> – well-studied, safe, and effective for strength.</li>
+        <li><strong>Vitamin D</strong> – useful if you don’t get enough sun.</li>
+      </ul>
+    </div>
+
+    <!-- AVOID -->
+    <h2>Supplements beginners should avoid</h2>
+    <div class="card">
+      <ul>
+        <li class="warning">Fat burners promising fast results</li>
+        <li class="warning">“Testosterone boosters” with no real evidence</li>
+        <li class="warning">Unnecessary stacks with many unknown ingredients</li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to home page</a>
+
+  </div>
+
 </body>
 </html>
