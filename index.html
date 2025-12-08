@@ -455,6 +455,31 @@ body {
         gap: 10px;
       }
     }
+    .program-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+}
+
+.program-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #14b8a6, #3b82f6);
+  border-radius: 16px 16px 0 0;
+}
+.program-level {
+  color: #0d9488;
+  font-weight: 600;
+}
+.program-card button:hover {
+  background: linear-gradient(135deg, #14b8a6, #3b82f6);
+  color: #fff;
+}
+
   </style>
 </head>
 <body>
