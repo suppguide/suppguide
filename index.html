@@ -2,27 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SuppGuide – Smart Supplement Choices for Beginners</title>
+  <title>SuppGuide – Smart, Budget-Friendly Supplement Guide for Beginners</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
     content="SuppGuide helps beginners pick budget-friendly supplements that actually work. Honest reviews of creatine, protein powder, and basic stacks."
   />
   <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #081326;
-      --bg-card: #0c1630;
-      --accent: #4f46e5;
-      --accent-soft: #6366f1;
-      --danger: #fb7185;
-      --text-main: #f9fafb;
-      --text-soft: #9ca3af;
-      --border-soft: rgba(148, 163, 184, 0.25);
-      --radius-lg: 18px;
-      --radius-sm: 10px;
-      --shadow-soft: 0 26px 60px rgba(15, 23, 42, 0.85);
-      --shadow-chip: 0 6px 18px rgba(15, 23, 42, 0.8);
+.site-header {
+  background: linear-gradient(135deg, #1e40af, #0f172a);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.site-header p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #c7d2fe;
+  font-size: 1.1rem;
+}
+
     }
 
     * {
@@ -31,12 +37,14 @@
       padding: 0;
     }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at 0 0, #1d1b4c 0, #050816 60%);
-      color: var(--text-main);
-      min-height: 100vh;
+ </head>
+<body>
+
+<header class="site-header">
+  <h1>SuppGuide</h1>
+  <p>Honest, budget-friendly supplement advice for beginners.</p>
+</header>
+
     }
 
     a {
