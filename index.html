@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SuppGuide – Smart Supplement Guide for Beginners</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Honest, budget-friendly supplement advice for beginners." />
+  <title>SuppGuide – Honest supplement picks for beginners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="SuppGuide helps beginners pick a simple, budget-friendly supplement stack that actually works."
+  />
 
   <style>
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --primary: #2f55ff;
-      --accent: #2dd4bf;
-      --text-main: #0f172a;
-      --text-soft: #475569;
-      --border: rgba(15, 23, 42, 0.08);
-      --radius: 16px;
+      --bg-soft: #f4f5ff;
+      --bg-card: #ffffff;
+      --text-main: #111827;
+      --text-soft: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.1);
+      --danger: #f97316;
+      --muted-chip: #d1d5db;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --shadow-chip: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -25,222 +32,479 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, var(--accent) 45%, #eef0ff 100%);
       color: var(--text-main);
-      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
     }
 
-    /* PAGE WIDTH */
     .shell {
+      width: 100%;
       max-width: 1320px;
-      margin: 0 auto;
-      padding: 32px 24px 80px;
+      margin: 24px auto 56px;
+      padding: 20px 24px 56px;
+      background: transparent;
     }
 
     /* HEADER */
+
     header {
       display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 32px;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 26px;
     }
 
-    .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2f55ff, #6d8bff);
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
     }
 
-    header h1 {
+    .brand-text h1 {
       font-size: 22px;
-      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
-    header p {
-      font-size: 14px;
+    .brand-text p {
+      font-size: 13px;
       color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .header-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-chip);
+      color: #111827;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16a34a;
+    }
+
+    .pill-icon {
+      font-size: 13px;
     }
 
     /* HERO */
+
     .hero {
-      background: linear-gradient(135deg, #2f55ff, #1e293b);
-      color: white;
-      border-radius: 24px;
-      padding: 48px;
-      margin-bottom: 48px;
+      margin-top: 8px;
+      background: radial-gradient(circle at 20% 0, #4f46e5 0, #1f2937 72%);
+      border-radius: 26px;
+      padding: 32px 34px;
+      color: #ffffff;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.25);
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 28px;
+      box-shadow: var(--shadow-soft);
     }
 
     .hero h2 {
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
     }
 
     .hero p {
-      opacity: 0.95;
-      margin-bottom: 20px;
-      max-width: 520px;
+      font-size: 14px;
+      color: rgba(241, 245, 249, 0.9);
+      max-width: 480px;
     }
 
-    .hero-actions button {
-      background: white;
-      color: #1e293b;
-      border: none;
-      padding: 12px 18px;
+    .hero p strong {
+      color: #ffffff;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
       border-radius: 999px;
-      font-weight: 600;
+      padding: 11px 20px;
+      font-size: 14px;
+      border: none;
       cursor: pointer;
-      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: #f9fafb;
+      color: #111827;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3);
+    }
+
+    .btn-ghost {
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: transparent;
     }
 
     .snapshot {
-      background: rgba(255,255,255,0.15);
-      border-radius: 18px;
-      padding: 20px;
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.6), rgba(17, 24, 39, 0.2));
+      border-radius: 22px;
+      padding: 20px 22px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      backdrop-filter: blur(14px);
     }
 
-    /* SECTION */
-    section {
-      margin-bottom: 48px;
+    .snapshot strong {
+      font-size: 13px;
+      color: #e5e7eb;
     }
 
-    section h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
+    .snapshot-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #e5e7eb;
     }
 
-    section p {
+    .snapshot-row span.tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .snapshot-row small {
+      font-size: 12px;
+      color: #cbd5f5;
+    }
+
+    /* QUICK PICKS SECTION */
+
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
       color: var(--text-soft);
       margin-bottom: 20px;
     }
 
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 12px;
+      padding: 6px 11px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #111827;
+      box-shadow: var(--shadow-chip);
+    }
+
     /* CARDS */
-    .cards {
+
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 165px;
     }
 
-    .card h4 {
-      margin-bottom: 6px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #eef2ff;
-      color: #1e3a8a;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
+    .card-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 10px;
     }
 
-    footer {
-      text-align: center;
+    .card-chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #c4b5fd;
+      background: #eef2ff;
+      color: #4c1d95;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card-chip.support {
+      border-color: #7dd3fc;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .card-chip.optional {
+      border-color: #fed7aa;
+      background: #fff7ed;
+      color: #b45309;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      margin-top: 12px;
       font-size: 12px;
       color: var(--text-soft);
-      margin-top: 80px;
+    }
+
+    .card-footer strong {
+      color: var(--text-main);
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .snapshot {
+        margin-top: 8px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 24px 20px;
+      }
+
+      .shell {
+        padding: 16px 16px 40px;
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        margin-bottom: 18px;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="shell">
-
+  <main class="shell">
     <!-- HEADER -->
-    <header class="site-header">
-  <div class="brand">
-    <div class="brand-mark">S</div>
-    <div class="brand-text">
-      <div class="brand-title-row">
-        <h1>SuppGuide</h1>
+    <header>
+      <div class="brand-row">
+        <div class="logo-circle">S</div>
+        <div class="brand-text">
+          <h1>SuppGuide</h1>
+          <p>Honest supplement picks for beginners.</p>
+        </div>
       </div>
-      <p>Honest, budget-friendly supplement advice for beginners.</p>
 
-
-      <div class="brand-badges">
-        <span class="badge-pill">Beginner-friendly</span>
-        <span class="badge-pill">Budget-friendly</span>
+      <div class="header-badges">
+        <span class="pill">
+          <span class="pill-dot"></span>
+          Beginner-friendly
+        </span>
+        <span class="pill">
+          <span class="pill-icon">💸</span>
+          Budget-friendly
+        </span>
       </div>
-    </div>
-  </div>
-</header>
-
+    </header>
 
     <!-- HERO -->
-    <div class="hero">
+    <section class="hero">
       <div>
         <h2>What should a beginner really take?</h2>
         <p>
-          <p>
-  SuppGuide cuts through the noise and shows a simple, evidence-based starter stack:
-  <strong>creatine, protein powder</strong>, and only essentials that actually matter.
-</p>
-
+          SuppGuide cuts through the noise and gives you a simple, evidence-based
+          starter stack: <strong>creatine, protein powder,</strong> and optionally
+          a basic health stack. No miracle pills, no fake promises.
         </p>
+
         <div class="hero-actions">
-  <button>View beginner stack</button>
-  <button>Compare brands</button>
-</div>
-
+          <button class="btn-primary">View beginner stack</button>
+          <button class="btn-ghost">Compare brands</button>
+        </div>
       </div>
 
-      <div class="snapshot">
+      <aside class="snapshot">
         <strong>Quick snapshot</strong>
-        <p>✔ Creatine — priority</p>
-        <p>✔ Protein powder — support</p>
-        <p>○ Health stack — optional</p>
-      </div>
-    </div>
+
+        <div class="snapshot-row">
+          ✓ Creatine — <span class="tag">priority</span>
+        </div>
+        <div class="snapshot-row">
+          ✓ Protein powder — <span class="tag">support</span>
+        </div>
+        <div class="snapshot-row">
+          ○ Health stack — <span class="tag">optional</span>
+        </div>
+
+        <div class="snapshot-row">
+          <small>
+            We earn a small commission on some links — never at extra cost to you.
+            Recommendations stay independent either way.
+          </small>
+        </div>
+      </aside>
+    </section>
 
     <!-- QUICK PICKS -->
     <section>
-      <h3>Quick picks for beginners</h3>
-      <p>You don’t need 10 supplements to get results.</p>
+      <h3 class="section-title">Quick picks for beginners</h3>
+      <p class="section-subtitle">
+        You don’t need 10 supplements to get results. Start with these three
+        categories.
+      </p>
 
-      <div class="cards">
-        <div class="card">
-          <span class="tag">#1 priority</span>
-          <h4>Creatine Monohydrate</h4>
-          <p>Most researched supplement for strength & performance.</p>
-        </div>
+      <div class="filter-row">
+        <span class="chip">Goal: build muscle</span>
+        <span class="chip">Budget: student-friendly</span>
+        <span class="chip">Experience: 0–2 years</span>
+      </div>
 
-        <div class="card">
-          <span class="tag">support</span>
-          <h4>Protein Powder</h4>
-          <p>Simple way to hit daily protein targets.</p>
-        </div>
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <article class="card">
+          <div>
+            <div class="card-label-row">
+              <span class="card-chip">#1 priority</span>
+            </div>
+            <h4 class="card-title">Creatine Monohydrate</h4>
+            <p class="card-body">
+              Most researched supplement for strength &amp; performance.
+              Simple daily dose, affordable, and safe for healthy adults.
+            </p>
+          </div>
+          <div class="card-footer">
+            Typical dose: <strong>3–5 g per day</strong>
+          </div>
+        </article>
 
-        <div class="card">
-          <span class="tag">optional</span>
-          <h4>Basic Health Stack</h4>
-          <p>Vitamin D, omega-3, magnesium if needed.</p>
-        </div>
+        <!-- Card 2 -->
+        <article class="card">
+          <div>
+            <div class="card-label-row">
+              <span class="card-chip support">support</span>
+            </div>
+            <h4 class="card-title">Protein Powder</h4>
+            <p class="card-body">
+              Easiest way to hit your daily protein target when life is busy.
+              Whey or plant-based options both work — pick what fits your diet.
+            </p>
+          </div>
+          <div class="card-footer">
+            Typical dose: <strong>1–2 scoops on busy days</strong>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div>
+            <div class="card-label-row">
+              <span class="card-chip optional">optional</span>
+            </div>
+            <h4 class="card-title">Basic Health Stack</h4>
+            <p class="card-body">
+              Simple additions like vitamin&nbsp;D, omega-3, and magnesium can
+              support long-term health — but only after sleep, food, and training
+              are in a good place.
+            </p>
+          </div>
+          <div class="card-footer">
+            Use only if bloodwork or a professional suggests a gap.
+          </div>
+        </article>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
       Evidence-based picks • Honest affiliate disclosure
     </footer>
-
-  </div>
+  </main>
 </body>
 </html>
