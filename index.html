@@ -38,6 +38,65 @@ body {
       margin: 0 auto;
       padding: 24px 24px 56px;
     }
+/* ─── Templates section ───────────────────────────── */
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.template-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.template-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.template-level {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.template-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.template-btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.template-btn:hover {
+  background: #020617;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+}
 
     /* HEADER */
     .site-header {
@@ -480,41 +539,44 @@ body {
     </section>
 
     <!-- HOW IT WORKS -->
-    <section class="section">
-      <div class="section-title-row">
-        <h2 class="section-title">How SuppGuide works</h2>
-        <p class="section-sub">Simple, no-BS information for beginners who don’t want to waste money.</p>
-      </div>
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Program Templates</h2>
+    <p class="section-subtitle">
+      Beginner'dan advanced seviyeye kadar hazır fitness program taslakları.
+    </p>
+  </div>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-index">Step 1</div>
-          <div class="step-title">Choose your goal</div>
-          <div class="step-text">
-            Are you trying to build muscle, lose fat or just have more energy in the gym and at school?
-            We start by defining your main goal.
-          </div>
-        </div>
+  <div class="templates-grid">
+    <article class="template-card">
+      <h3 class="template-title">Beginner Full Body</h3>
+      <p class="template-level">Level: Beginner</p>
+      <p class="template-desc">
+        Haftada 3 gün, tüm vücudu çalıştıran basit ve takip etmesi kolay bir program.
+      </p>
+      <button class="template-btn">View plan</button>
+    </article>
 
-        <div class="step-card">
-          <div class="step-index">Step 2</div>
-          <div class="step-title">See what really helps</div>
-          <div class="step-text">
-            For each goal, we show the 1–3 supplements that actually have science behind them –
-            and which hype products you can ignore.
-          </div>
-        </div>
+    <article class="template-card">
+      <h3 class="template-title">Push / Pull / Legs</h3>
+      <p class="template-level">Level: Intermediate</p>
+      <p class="template-desc">
+        Bölgesel bölünmüş antrenman sevenler için klasik PPL split.
+      </p>
+      <button class="template-btn">View plan</button>
+    </article>
 
-        <div class="step-card">
-          <div class="step-index">Step 3</div>
-          <div class="step-title">Buy from trusted stores</div>
-          <div class="step-text">
-            We link to official or trusted shops. Prices are compared, and if there is an affiliate link,
-            we clearly mark it.
-          </div>
-        </div>
-      </div>
-    </section>
+    <article class="template-card">
+      <h3 class="template-title">Lean Bulk Routine</h3>
+      <p class="template-level">Level: Advanced</p>
+      <p class="template-desc">
+        Kilo alırken yağ kontrolünü de önemseyenler için hacim odaklı plan.
+      </p>
+      <button class="template-btn">View plan</button>
+    </article>
+  </div>
+</section>
+
 
     <!-- CATEGORIES -->
     <section class="section">
