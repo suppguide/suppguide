@@ -479,6 +479,29 @@ body {
   background: linear-gradient(135deg, #14b8a6, #3b82f6);
   color: #fff;
 }
+.program-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.program-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #3ddad7, #2bb0ff);
+}
+.program-card {
+  background: linear-gradient(
+    180deg,
+    #f8fffe,
+    #ffffff
+  );
+}
 
   </style>
 </head>
