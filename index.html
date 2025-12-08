@@ -252,6 +252,44 @@ nav a {
 .hero-left {
   padding-right: 40px;
 }
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.hero-right-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.goal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.goal-card {
+  border: 2px solid #3ddad7;
+  border-radius: 16px;
+  padding: 14px;
+  background: #f1fffe;
+}
+
+.goal-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.goal-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
 
 </style>
 </head>
@@ -274,64 +312,41 @@ nav a {
 </header>
 
 <section class="hero">
-  <div class="hero-left-box">
-
-   <div>
-    <div class="hero-eyebrow">Smart supplement guide</div>
-
-    <h1>Find the right supplement<br>for your body & budget.</h1>
-
-    <p>
-      SuppGuide helps beginners understand which supplements are
-      actually useful, which are a waste of money, and where to buy them safely.
-    </p>
-
-    <div class="hero-tags">
-      <span>Protein • Creatine • Pre-workout</span>
-      <span>Beginner friendly</span>
-      <span>No fake promises</span>
-    </div>
-</div>
-    <div class="hero-actions">
-      <button class="primary-btn">Start with beginner guide</button>
-      <a href="#" class="secondary-link">Or see all supplements →</a>
-    </div>
-
-    <div class="hero-note">
-      No shop, no spam. Some links may earn us a small commission.
-    </div>
+  <div class="hero-left">
+    <!-- SOL YAZILAR BURADA -->
   </div>
 
-  <aside class="hero-right">
-    <h3>Pick your main goal</h3>
+  <aside class="hero-right-card">
+    <div class="hero-right-title">Pick your main goal</div>
 
     <div class="goal-grid">
       <div class="goal-card">
         <div class="goal-label">GOAL</div>
-        <h4>Build muscle</h4>
-        <p>Protein + creatine basics, recovery tips.</p>
+        <div class="goal-title">Build muscle</div>
+        <div class="goal-text">Protein + creatine basics, recovery tips.</div>
       </div>
 
       <div class="goal-card">
         <div class="goal-label">GOAL</div>
-        <h4>Lose fat</h4>
-        <p>Supplements are 10%, diet is 90%.</p>
+        <div class="goal-title">Lose fat</div>
+        <div class="goal-text">Supplements are 10%, diet is 90%.</div>
       </div>
 
       <div class="goal-card">
         <div class="goal-label">GOAL</div>
-        <h4>Energy & focus</h4>
-        <p>Caffeine and safe stimulant usage.</p>
+        <div class="goal-title">Energy & focus</div>
+        <div class="goal-text">Caffeine and safe stimulant usage.</div>
       </div>
 
       <div class="goal-card">
         <div class="goal-label">GOAL</div>
-        <h4>Health basics</h4>
-        <p>Vitamin D, omega-3 when needed.</p>
+        <div class="goal-title">Health basics</div>
+        <div class="goal-text">Vitamin D, omega-3 when needed.</div>
       </div>
     </div>
   </aside>
 </section>
+
 
 <section class="programs">
   <h2>Program Templates</h2>
