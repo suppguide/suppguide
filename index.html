@@ -2,56 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SuppGuide – Honest, budget-friendly supplement advice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SuppGuide – Honest supplement picks for beginners</title>
+  <meta
+    name="description"
+    content="SuppGuide helps beginners pick a simple, budget-friendly supplement stack that actually works."
+  />
 
   <style>
-    /* BURAYA: .site-header { ... } ile başlayan tüm CSS */
-  </style>
-</head>
-<body>
-  <!-- buradan sonrası normal HTML içerik -->
-
-.site-header {
-  background:
-    linear-gradient(
-      135deg,
-      rgb(37, 99, 235),
-      rgb(79, 70, 229)
-    );
-  padding: 72px 24px 64px;
-  text-align: center;
-  color: white;
-}
-
-.site-header h1 {
-  font-size: clamp(2.4rem, 5vw, 3.2rem);
-  margin-bottom: 12px;
-  letter-spacing: -0.03em;
-}
-
-.site-header p {
-  font-size: 1.05rem;
-  max-width: 520px;
-  margin: 0 auto;
-  color: rgba(255,255,255,0.9);
-}
-
-}
-
-.site-header h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: white;
-  margin-bottom: 12px;
-}
-
-.site-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  color: #c7d2fe;
-  font-size: 1.1rem;
-}
-
+    :root {
+      --bg-soft: #f4f5f9;
+      --bg-card: #ffffff;
+      --text-main: #111827;
+      --text-soft: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --border-soft: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-sm: 10px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --shadow-chip: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -60,14 +30,12 @@
       padding: 0;
     }
 
- </head>
-<body>
-
-<header class="site-header">
-  <h1>SuppGuide</h1>
-  <p>Honest, budget-friendly supplement advice for beginners.</p>
-</header>
-
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, #f4f5f9 45%, #edf0f7 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -76,248 +44,341 @@
     }
 
     .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 28px 18px 60px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* NAVBAR -------------------------------------------------- */
-    .nav {
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* HEADER */
+
+    .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
-    .nav-left {
+    .brand {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 20% 0, #a5b4fc 0, #4f46e5 40%, #111827 90%);
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #3b82f6, #111827);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
+      color: #f9fafb;
+      font-weight: 700;
       font-size: 18px;
       box-shadow: var(--shadow-chip);
     }
 
-    .logo span {
-      transform: translateY(-1px);
-    }
-
-    .brand-text-main {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 17px;
-    }
-
-    .brand-text-sub {
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    .nav-right {
+    .brand-text {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      flex-direction: column;
+      gap: 2px;
     }
 
-    .chip {
-      border-radius: 999px;
-      padding: 5px 12px;
-      font-size: 11px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: var(--text-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(18px);
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
-    }
-
-    .lang-switch {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      padding: 4px;
-      display: inline-flex;
-      gap: 4px;
-      background: rgba(15, 23, 42, 0.7);
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .lang-pill {
-      padding: 3px 9px;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-
-    .lang-pill.active {
-      background: linear-gradient(135deg, var(--accent-soft), #22d3ee);
-      color: #020617;
+    .brand-title {
       font-weight: 600;
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8);
-    }
-
-    /* HERO ----------------------------------------------------- */
-    .hero {
-      border-radius: 28px;
-      padding: 24px 22px 26px;
-      background:
-        radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.18), transparent 55%),
-        radial-gradient(circle at 90% 0, rgba(236, 72, 153, 0.23), transparent 60%),
-        linear-gradient(135deg, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 26px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .hero-topline {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #a5b4fc;
-      margin-bottom: 6px;
-    }
-
-    .hero-title {
-      font-size: 28px;
-      font-weight: 800;
       letter-spacing: 0.02em;
-      margin-bottom: 10px;
     }
 
-    .hero-subtitle {
-      font-size: 14px;
-      color: #cbd5f5;
-      max-width: 540px;
-      line-height: 1.55;
-      margin-bottom: 18px;
-    }
-
-    .hero-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--accent-soft), #22c55e);
-      color: #020617;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 18px 35px rgba(79, 70, 229, 0.35);
-    }
-
-    .btn-outline {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      cursor: pointer;
-      font-size: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--text-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .hero-tagline {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hero-tagline span {
-      color: #a5b4fc;
-      font-weight: 500;
-    }
-
-    /* SECTIONS ------------------------------------------------- */
-    .section {
-      margin-top: 28px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .section-sub {
+    .brand-subtitle {
       font-size: 12px;
       color: var(--text-soft);
     }
 
     .pill-row {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 8px;
-      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .pill {
       font-size: 11px;
-      padding: 5px 11px;
+      padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border: 1px solid rgba(209, 213, 219, 0.8);
+      background: rgba(255, 255, 255, 0.8);
       color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    /* CARDS ---------------------------------------------------- */
-    .grid {
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 8px;
+      margin-bottom: 28px;
+      border-radius: 28px;
+      padding: 26px 26px 24px;
+      background: radial-gradient(circle at 20% 0, #a5b4fc 0, #1d2454 30%, #020617 100%);
+      color: #e5e7eb;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 120% -20%, rgba(59, 130, 246, 0.22), transparent 55%),
+        radial-gradient(circle at -20% 130%, rgba(251, 191, 36, 0.18), transparent 55%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: center;
     }
 
-    .card {
-      background: radial-gradient(circle at 0 0, #111827, #020617 55%);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 14px 14px 13px;
-      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.95);
+    .hero-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #c7d2fe;
+      margin-bottom: 10px;
     }
 
-    .card-header {
+    .hero-title {
+      font-size: clamp(26px, 3vw, 32px);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      color: #f9fafb;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      color: #e5e7eb;
+      max-width: 540px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 13px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      background: none;
+      color: inherit;
+    }
+
+    .btn-primary {
+      background: #f9fafb;
+      color: #111827;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.6);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-caption {
+      font-size: 11px;
+      color: #c7d2fe;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-caption span {
+      opacity: 0.9;
+    }
+
+    .hero-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .hero-side-card {
+      backdrop-filter: blur(20px);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 64, 175, 0.75));
+      border-radius: 22px;
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      padding: 18px 18px 14px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      color: #e5e7eb;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-side-sub {
+      font-size: 11px;
+      color: #c7d2fe;
+      margin-bottom: 12px;
+    }
+
+    .hero-mini-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .hero-mini {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 6px 10px;
+      font-size: 11px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      margin-bottom: 6px;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-mini span {
+      opacity: 0.95;
+    }
+
+    .hero-mini strong {
+      font-weight: 600;
+      color: #facc15;
+      font-size: 11px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: #c7d2fe;
+      opacity: 0.85;
+    }
+
+    /* QUICK PICKS */
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1e3a8a;
+      border: 1px solid rgba(191, 219, 254, 0.9);
+    }
+
+    .chip-alt {
+      background: #f3f4f6;
+      color: var(--text-soft);
+      border-color: #e5e7eb;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 16px 15px 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
     }
 
     .card-title {
@@ -325,102 +386,119 @@
       font-weight: 600;
     }
 
-    .card-badge {
-      font-size: 10px;
+    .card-tag {
+      font-size: 11px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(22, 163, 74, 0.12);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.55);
+      background: rgba(34, 197, 94, 0.08);
+      color: #166534;
+      border: 1px solid rgba(74, 222, 128, 0.8);
+      white-space: nowrap;
     }
 
-    .card- {
-      font-size: 12px;
+    .card-body {
+      font-size: 13px;
       color: var(--text-soft);
       line-height: 1.5;
-      margin-bottom: 10px;
     }
 
     .card-meta {
       font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(209, 213, 219, 0.9);
       display: flex;
       justify-content: space-between;
-      color: #e5e7eb;
-      margin-bottom: 10px;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .pill-mini {
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      font-size: 10px;
+    .card-price {
+      font-size: 11px;
       color: var(--text-soft);
     }
 
-    .btn-link {
-      width: 100%;
+    .card-price strong {
+      font-size: 12px;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .card-link {
+      font-size: 11px;
+      padding: 6px 10px;
       border-radius: 999px;
-      border: none;
+      background: #111827;
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
       cursor: pointer;
-      padding: 8px 0;
-      font-size: 12px;
-      font-weight: 500;
-      background: linear-gradient(135deg, #0f172a, #020617);
-      color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.55);
     }
 
-    .btn-link span {
-      color: #a5b4fc;
-    }
-
-    /* HOW IT WORKS & DISCLOSURE -------------------------------- */
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .panel {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 14px 14px 13px;
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.75);
-      font-size: 12px;
-      color: var(--text-soft);
-      line-height: 1.55;
-    }
-
-    .panel h3 {
+    .card-link span {
       font-size: 13px;
-      margin-bottom: 7px;
-      color: #e5e7eb;
     }
 
-    .panel ul {
-      padding-left: 16px;
-      margin-top: 5px;
+    /* HOW IT WORKS */
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .panel li {
-      margin-bottom: 4px;
+    .how-step {
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(209, 213, 219, 0.9);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 14px 13px 13px;
     }
 
-    .panel strong {
-      color: #e5e7eb;
+    .how-step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 5px;
     }
 
-    /* FOOTER --------------------------------------------------- */
+    .how-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .how-step-body {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+
     .footer {
-      margin-top: 26px;
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
       padding-top: 16px;
-      border-top: 1px solid rgba(31, 41, 55, 0.85);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px 18px;
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 12px;
       font-size: 11px;
       color: var(--text-soft);
     }
@@ -428,221 +506,294 @@
     .footer-links {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--text-soft);
+      text-decoration: underline;
+      text-decoration-color: rgba(209, 213, 219, 0.9);
     }
 
-    /* RESPONSIVE ----------------------------------------------- */
+    /* RESPONSIVE */
+
     @media (max-width: 880px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .hero {
+        padding: 22px 18px 18px;
         border-radius: 22px;
       }
-      .grid {
-        grid-template-columns: 1fr;
+
+      .hero-side-card {
+        margin-top: 6px;
       }
-      .two-col {
-        grid-template-columns: 1fr;
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .how-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding: 20px 14px 40px;
+      .shell {
+        padding-inline: 14px;
       }
-      .hero-title {
-        font-size: 22px;
+
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
       }
-      .hero-subtitle {
-        font-size: 13px;
+
+      .hero-inner {
+        gap: 22px;
       }
-      .section-title {
-        font-size: 16px;
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
-<>
+
+<body>
   <div class="page">
-    <!-- NAVBAR -->
-    <header class="nav">
-      <div class="nav-left">
-        <div class="logo"><span>S</span></div>
-        <div>
-          <div class="brand-text-main">SuppGuide</div>
-          <div class="brand-text-sub">Honest supplement picks for beginners</div>
-        </div>
-      </div>
-      <div class="nav-right">
-        <div class="chip">
-          <span class="chip-dot"></span>
-          <span>Beginner-friendly · Budget-friendly</span>
-        </div>
-        <div class="lang-switch" title="Languages (coming soon)">
-          <div class="lang-pill active">EN</div>
-          <div class="lang-pill">TR</div>
-          <div class="lang-pill">MK</div>
-          <div class="lang-pill">DE</div>
-        </div>
-      </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <div class="hero-topline">Start smart – not with 10 supplements</div>
-        <h1 class="hero-title">What should a beginner really take?</h1>
-        <p class="hero-subtitle">
-          SuppGuide cuts the noise and shows you a simple, proven supplement
-          setup: <strong>creatine, protein powder, and a basic health stack</strong>.
-          No miracle pills, no fake promises.
-        </p>
-        <div class="hero-bar">
-          <button class="btn-primary">
-            Beginner stack (3 supplements) →
-          </button>
-          <button class="btn-outline">
-            Compare creatine brands
-          </button>
-          <p class="hero-tagline">
-            <span>Evidence-based</span> picks + honest affiliate disclosure.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUICK PICKS -->
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Quick picks for beginners</h2>
-          <p class="section-sub">
-            Start with these three categories – you don’t need anything crazy.
-          </p>
-        </div>
-      </div>
-
-      <div class="pill-row">
-        <span class="pill">Goal: build muscle</span>
-        <span class="pill">Budget: student-friendly</span>
-        <span class="pill">Training age: 0–2 years</span>
-      </div>
-
-      <div class="grid">
-        <!-- Card 1: Creatine -->
-        <article class="card">
-          <div class="card-header">
-            <h3 class="card-title">Creatine Monohydrate</h3>
-            <span class="card-badge">#1 priority</span>
+    <main class="shell">
+      <!-- HEADER -->
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-logo">S</div>
+          <div class="brand-text">
+            <div class="brand-title">SuppGuide</div>
+            <div class="brand-subtitle">
+              Honest supplement picks for beginners
+            </div>
           </div>
-          <p class="card-">
-            Safest, most researched supplement for strength &amp; performance.
-            Go for a pure, flavored or unflavored creatine monohydrate – no
-            crazy blends needed.
-          </p>
-          <div class="card-meta">
-            <span>3–5 g per day</span>
-            <span>≈ 8–12 € / month</span>
-          </div>
-          <button class="btn-link">
-            View recommended brands <span>(affiliate)</span>
-          </button>
-        </article>
-
-        <!-- Card 2: Protein -->
-        <article class="card">
-          <div class="card-header">
-            <h3 class="card-title">Whey / Protein Powder</h3>
-            <span class="card-badge" style="background: rgba(59,130,246,.15); border-color: rgba(59,130,246,.7); color:#bfdbfe;">support</span>
-          </div>
-          <p class="card-">
-            Food first – but a simple whey or plant protein helps you hit your
-            daily protein target when you don’t have time to cook.
-          </p>
-          <div class="card-meta">
-            <span>1–2 scoops on busy days</span>
-            <span>≈ 15–25 € / month</span>
-          </div>
-          <button class="btn-link">
-            See beginner-friendly options <span>(affiliate)</span>
-          </button>
-        </article>
-
-        <!-- Card 3: Health Stack -->
-        <article class="card">
-          <div class="card-header">
-            <h3 class="card-title">Basic Health Stack</h3>
-            <span class="card-badge" style="background: rgba(234,179,8,.12); border-color: rgba(234,179,8,.7); color:#facc15;">optional</span>
-          </div>
-          <p class="card-">
-            Simple additions like vitamin D, omega-3 and magnesium can support
-            overall health – but they come <strong>after</strong> sleep, food and training.
-          </p>
-          <div class="card-meta">
-            <span>Only if bloodwork / diet needs it</span>
-            <span>flexible budget</span>
-          </div>
-          <button class="btn-link">
-            Learn when it’s worth it <span>→ guide</span>
-          </button>
-        </article>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS + DISCLOSURE -->
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">How SuppGuide works</h2>
-          <p class="section-sub">
-            So you know exactly why we recommend something (or don’t).
-          </p>
         </div>
-      </div>
 
-      <div class="two-col">
-        <!-- Left: process -->
-        <article class="panel">
-          <h3>We keep it very simple:</h3>
-          <ul>
-            <li><strong>1. Start with goals &amp; budget.</strong> Are you cutting, bulking or just getting stronger? Student money or flexible?</li>
-            <li><strong>2. Cut 90% of products.</strong> If a supplement has weak science or crazy marketing, we skip it.</li>
-            <li><strong>3. Pick 1–3 options per category.</strong> A few long-term brands, not 50 random links.</li>
-            <li><strong>4. Explain everything in plain language.</strong> When to take it, side effects, what to expect realistically.</li>
-          </ul>
-        </article>
+        <div class="pill-row">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Beginner-friendly</span>
+          </div>
+          <div class="pill">
+            💸 <span>Budget-friendly</span>
+          </div>
+        </div>
+      </header>
 
-        <!-- Right: affiliate disclosure -->
-        <article class="panel">
-          <h3>Affiliate disclosure</h3>
-          <p>
-            Some links on this site are affiliate links. If you buy through
-            them, we may earn a small commission at no extra cost to you.
-          </p>
-          <p style="margin-top:6px;">
-            This helps keep SuppGuide free and 100% ad-light. We will <strong>never</strong>
-            recommend a product just because it pays more. If a supplement
-            sucks, we’ll say it clearly.
-          </p>
-        </article>
-      </div>
-    </section>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-kicker">
+              Start smart – not with 10 supplements
+            </div>
+            <h1 class="hero-title">
+              What should a beginner really take?
+            </h1>
+            <p class="hero-text">
+              SuppGuide cuts the noise and gives you a simple, proven supplement
+              setup: <strong>creatine, protein powder, and a basic health stack</strong>.
+              No miracle pills, no fake promises.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary">
+                Beginner stack (3 supplements)
+              </button>
+              <button class="btn btn-ghost">
+                Compare brands
+              </button>
+            </div>
+            <div class="hero-caption">
+              <span>Evidence-based picks</span>
+              <span>•</span>
+              <span>Honest affiliate disclosure</span>
+            </div>
+          </div>
+
+          <aside class="hero-side-card">
+            <div class="hero-side-title">Quick snapshot</div>
+            <div class="hero-side-sub">
+              Keep it minimal, keep it consistent. This is the whole stack:
+            </div>
+            <div class="hero-mini-row">
+              <div class="hero-mini">
+                <span>Creatine monohydrate</span>
+                <strong>#1 priority</strong>
+              </div>
+              <div class="hero-mini">
+                <span>Whey / protein powder</span>
+                <strong>support</strong>
+              </div>
+            </div>
+            <div class="hero-mini">
+              <span>Basic health stack (vitamin D, omega-3, magnesium)</span>
+              <strong>optional</strong>
+            </div>
+            <p class="hero-note">
+              We earn a small commission on some links – never at extra cost to you.
+              Recommendations stay independent either way.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- QUICK PICKS -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Quick picks for beginners</h2>
+            <p class="section-sub">
+              Start with one goal and a realistic budget – you don’t need 10 different products.
+            </p>
+          </div>
+          <div class="chip-row">
+            <span class="chip chip-alt">Goal: build muscle</span>
+            <span class="chip chip-alt">Budget: student-friendly</span>
+            <span class="chip chip-alt">Training age: 0–2 years</span>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card-header-row">
+              <h3 class="card-title">Creatine Monohydrate</h3>
+              <span class="card-tag">#1 priority</span>
+            </div>
+            <p class="card-body">
+              Safest, most researched supplement for strength &amp; size. Go for a simple,
+              unflavoured creatine monohydrate with no extra nonsense.
+            </p>
+            <p class="card-meta">
+              Dose: <strong>3–5 g per day</strong> • Timing: whenever • Loading phase: optional
+            </p>
+            <div class="card-footer">
+              <div class="card-price">
+                From <strong>~8–12 € / month</strong>
+              </div>
+              <button class="card-link">
+                <span>→</span> Beginner-friendly brands
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card-header-row">
+              <h3 class="card-title">Whey / Protein Powder</h3>
+            </div>
+            <p class="card-body">
+              Food first – but a simple whey or plant protein helps you hit your protein target on
+              busy days, or when appetite isn’t great.
+            </p>
+            <p class="card-meta">
+              Use when: you can’t reach your daily protein goal from regular food.
+            </p>
+            <div class="card-footer">
+              <div class="card-price">
+                From <strong>~15–25 € / month</strong>
+              </div>
+              <button class="card-link">
+                <span>→</span> See beginner-friendly options
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card-header-row">
+              <h3 class="card-title">Basic Health Stack</h3>
+            </div>
+            <p class="card-body">
+              Vitamin D, omega-3, and magnesium can be worth it if your diet and sunlight exposure
+              are lacking. Think of these as health insurance, not magic muscle pills.
+            </p>
+            <p class="card-meta">
+              Only if bloodwork / diet suggests you need it • Budget: flexible / optional
+            </p>
+            <div class="card-footer">
+              <div class="card-price">
+                From <strong>~10–20 € / month</strong>
+              </div>
+              <button class="card-link">
+                <span>→</span> Learn when it’s worth it
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">How SuppGuide works</h2>
+            <p class="section-sub">
+              You see exactly why we recommend something – or why we tell you to skip it.
+            </p>
+          </div>
+        </div>
+
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="how-step-label">Step 1</div>
+            <div class="how-step-title">Start with your real goal</div>
+            <p class="how-step-body">
+              Muscle, performance, or just basic health? We keep the stack tiny and tailored to
+              your actual situation, not influencer hype.
+            </p>
+          </div>
+
+          <div class="how-step">
+            <div class="how-step-label">Step 2</div>
+            <div class="how-step-title">Check the evidence</div>
+            <p class="how-step-body">
+              We summarise research in plain language and show when supplements actually do
+              something meaningful – and when they don’t.
+            </p>
+          </div>
+
+          <div class="how-step">
+            <div class="how-step-label">Step 3</div>
+            <div class="how-step-title">Pick beginner-friendly brands</div>
+            <p class="how-step-body">
+              We link to simple, good-value products. If you buy through those links we may earn a
+              small commission, but we never recommend junk just to get a click.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div>© <span id="year"></span> SuppGuide. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#">Contact</a>
-        <a href="#">Affiliate policy</a>
-        <a href="#">Privacy</a>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> SuppGuide. Evidence-based, budget-friendly supplement advice
+          for beginners.
+        </div>
+        <div class="footer-links">
+          <a href="#">Affiliate disclosure</a>
+          <a href="#">Contact</a>
+        </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // dynamic year in footer
+    // Year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-</>
+</body>
 </html>
