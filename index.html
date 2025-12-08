@@ -1,308 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SuppGuide</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>SuppGuide – Smart Supplement Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* --------------------- RESET --------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: #f5f7fb;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      font-family: inherit;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    /* --------------------- LAYOUT --------------------- */
+    .shell {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 24px 24px 56px;
+    }
 
-body {
-  font-family: Inter, system-ui, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
-}
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 24px;
+    }
 
-/* ===== HEADER ===== */
-header {
-  max-width: 1200px;
-  margin: 40px auto 0;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .logo-badge {
+      height: 34px;
+      width: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 0, #4b5bff, #4465e0, #111827 90%);
+      color: #fff;
+      font-weight: 600;
+    }
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+    }
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #64748b;
+    }
+    .nav-links a:hover {
+      background: rgba(148, 163, 184, 0.2);
+      color: #111827;
+    }
+    .nav-cta {
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: #111827;
+      color: #f9fafb;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
 
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #334155;
-  font-weight: 500;
-}
+    /* --------------------- HERO --------------------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      margin-top: 12px;
+      align-items: flex-start;
+    }
 
-.nav-btn {
-  background: #0f172a;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 20px;
-}
+    .hero-text-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: clamp(2.3rem, 2.5vw + 1.6rem, 3.1rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin: 0 0 16px;
+    }
+    .hero-subtitle {
+      max-width: 520px;
+      color: #475569;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .hero-tag {
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      font-size: 13px;
+      color: #334155;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
 
-/* ===== HERO ===== */
-.hero {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-}
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .btn-primary {
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(circle at 0 0, #4f46e5, #1d4ed8);
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.35);
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+    .hero-secondary-link {
+      font-size: 14px;
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-.hero small {
-  color: #6366f1;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
+    .hero-note {
+      font-size: 12px;
+      color: #64748b;
+      max-width: 520px;
+    }
 
-.hero h1 {
-  font-size: 44px;
-  margin: 16px 0;
-  line-height: 1.2;
-}
+    /* --------------------- GOAL CARD --------------------- */
+    .hero-right-card {
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 3px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.5);
+    }
+    .hero-right-inner {
+      background: radial-gradient(circle at 0 0, #1e293b, #020617 65%);
+      border-radius: 28px;
+      padding: 22px 22px 20px;
+      color: #e2e8f0;
+    }
+    .hero-right-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
 
-.hero p {
-  color: #475569;
-  max-width: 520px;
-}
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
 
-.hero-tags {
-  margin: 20px 0;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+    .goal-card {
+      border-radius: 18px;
+      padding: 12px 13px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+    .goal-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #93c5fd;
+      margin-bottom: 3px;
+    }
+    .goal-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+    .goal-text {
+      font-size: 11px;
+      color: #9ca3af;
+    }
 
-.hero-tags span {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 14px;
-}
+    /* ---------------- PROGRAM CARDS --------------------- */
+    .section-title {
+      margin-top: 52px;
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 700;
+    }
 
-.hero-actions {
-  margin-top: 20px;
-}
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-.hero-actions a {
-  text-decoration: none;
-  margin-right: 12px;
-  font-weight: 500;
-}
+    .template-card {
+      border-radius: 18px;
+      background: #e0fffb;
+      border: 1px solid #22c1c3;
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+    .template-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .template-level {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0f766e;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .template-desc {
+      font-size: 13px;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+    .btn-small {
+      align-self: flex-start;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 12px;
+      background: #020617;
+      color: #f9fafb;
+      cursor: pointer;
+    }
+    .btn-small:hover {
+      filter: brightness(1.08);
+    }
 
-.primary-btn {
-  background: #2563eb;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-}
+    /* --------------------- EMAIL STRIP --------------------- */
+    .email-strip {
+      margin-top: 56px;
+      padding: 32px 24px;
+      background: #020617;
+      color: #f9fafb;
+    }
+    .email-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .email-text-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .email-text-sub {
+      font-size: 13px;
+      color: #cbd5f5;
+    }
+    .email-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .email-input {
+      min-width: 220px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #64748b;
+      font-size: 13px;
+      outline: none;
+    }
+    .email-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px #38bdf8;
+    }
+    .btn-email {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #f9fafb;
+      color: #020617;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-email:hover {
+      filter: brightness(0.97);
+    }
 
-.secondary-link {
-  color: #2563eb;
-}
-
-/* ===== GOAL CARD (RIGHT) ===== */
-.goal-box {
-  background: white;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-}
-
-.goal-box h3 {
-  margin-bottom: 20px;
-}
-
-.goal-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.goal-card {
-  background: #ecfeff;
-  border: 1px solid #2dd4bf;
-  border-radius: 14px;
-  padding: 14px;
-}
-
-.goal-card small {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.goal-card h4 {
-  margin: 6px 0;
-  font-size: 15px;
-}
-
-.goal-card p {
-  font-size: 13px;
-  color: #475569;
-}
-
-/* ===== PROGRAMS ===== */
-.section {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 24px;
-}
-
-.programs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.program-card {
-  background: #ecfeff;
-  border: 1px solid #2dd4bf;
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.program-card h4 {
-  margin-bottom: 8px;
-}
-
-.program-card button {
-  margin-top: 14px;
-  background: #0f172a;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* ===== FOOTER MAIL ===== */
-.footer {
-  background: #0f172a;
-  color: white;
-  padding: 50px 24px;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  margin-right: 10px;
-}
-
-.footer button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  background: white;
-  cursor: pointer;
-}
-</style>
+    /* --------------------- RESPONSIVE --------------------- */
+    @media (max-width: 960px) {
+      .shell {
+        padding: 18px 16px 40px;
+      }
+      header.site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right-card {
+        margin-top: 10px;
+      }
+      .program-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .email-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .email-form {
+        width: 100%;
+      }
+      .email-input {
+        flex: 1 1 auto;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="shell">
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-badge">S</div>
+        <span>SuppGuide</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Beginners</a>
+        <a href="#">Protein</a>
+        <a href="#">Creatine</a>
+        <a href="#" class="nav-cta">Goal Quiz (Soon)</a>
+      </nav>
+    </header>
 
-<header>
-  <strong>SuppGuide</strong>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Beginners</a>
-    <a href="#">Protein</a>
-    <a href="#">Creatine</a>
-    <a href="#" class="nav-btn">Goal Quiz</a>
-  </nav>
-</header>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-text-eyebrow">Smart supplement guide</div>
+        <h1 class="hero-title">
+          Find the right supplement<br />
+          for your body &amp; budget.
+        </h1>
+        <p class="hero-subtitle">
+          SuppGuide helps beginners understand which supplements are actually
+          useful, which are a waste of money, and where to buy them safely.
+        </p>
 
-<section class="hero">
-  <div>
-    <small>SMART SUPPLEMENT GUIDE</small>
-    <h1>Find the right supplement<br>for your body & budget.</h1>
-    <p>SuppGuide helps beginners understand which supplements are actually useful and which are a waste of money.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Protein • Creatine • Pre-workout</span>
+          <span class="hero-tag">Beginner friendly</span>
+          <span class="hero-tag">No fake promises</span>
+        </div>
 
-    <div class="hero-tags">
-      <span>Protein</span>
-      <span>Creatine</span>
-      <span>Pre-workout</span>
-      <span>Beginner friendly</span>
-    </div>
+        <div class="hero-cta-row">
+          <button class="btn-primary" type="button">Start with beginner guide</button>
+          <a href="#" class="hero-secondary-link">Or see all supplements →</a>
+        </div>
 
-    <div class="hero-actions">
-      <a href="#" class="primary-btn">Start with beginner guide</a>
-      <a href="#" class="secondary-link">See all supplements →</a>
-    </div>
+        <p class="hero-note">
+          No shop, no spam. We only recommend trusted stores. If you buy via our
+          links, some of them may pay us a small commission.
+        </p>
+      </div>
+
+      <!-- RIGHT GOAL CARD -->
+      <aside class="hero-right-card">
+        <div class="hero-right-inner">
+          <div class="hero-right-title">Pick your main goal</div>
+          <div class="goal-grid">
+            <article class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-title">Build muscle</div>
+              <div class="goal-text">
+                Protein + creatine basics, recovery tips, realistic expectations.
+              </div>
+            </article>
+            <article class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-title">Lose fat</div>
+              <div class="goal-text">
+                Why supplements are 10% of the result and diet is 90%.
+              </div>
+            </article>
+            <article class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-title">Energy &amp; focus</div>
+              <div class="goal-text">
+                Caffeine, pre-workout &amp; safe stim usage for students and lifters.
+              </div>
+            </article>
+            <article class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-title">Health basics</div>
+              <div class="goal-text">
+                Omega-3, vitamin D, multivitamin – when it actually makes sense.
+              </div>
+            </article>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROGRAM TEMPLATES -->
+    <section>
+      <h2 class="section-title">Program Templates</h2>
+      <div class="program-grid">
+        <article class="template-card">
+          <div>
+            <div class="template-title">Beginner Full Body</div>
+            <div class="template-level">Level: Beginner</div>
+            <p class="template-desc">
+              Simple full-body routine. Train three days per week with
+              balanced volume and easy progression.
+            </p>
+          </div>
+          <button class="btn-small" type="button">View plan</button>
+        </article>
+
+        <article class="template-card">
+          <div>
+            <div class="template-title">Push / Pull / Legs</div>
+            <div class="template-level">Level: Intermediate</div>
+            <p class="template-desc">
+              Classic push / pull / legs split for intermediate lifters
+              who want more weekly volume and structure.
+            </p>
+          </div>
+          <button class="btn-small" type="button">View plan</button>
+        </article>
+
+        <article class="template-card">
+          <div>
+            <div class="template-title">Lean Bulk Routine</div>
+            <div class="template-level">Level: Advanced</div>
+            <p class="template-desc">
+              Smart lean bulking plan focused on gaining muscle while
+              controlling unnecessary fat gain.
+            </p>
+          </div>
+          <button class="btn-small" type="button">View plan</button>
+        </article>
+      </div>
+    </section>
   </div>
 
-  <div class="goal-box">
-    <h3>Pick your main goal</h3>
-    <div class="goal-grid">
-      <div class="goal-card">
-        <small>GOAL</small>
-        <h4>Build muscle</h4>
-        <p>Protein + creatine basics.</p>
+  <!-- EMAIL STRIP (TAM GENİŞLİK) -->
+  <section class="email-strip">
+    <div class="email-inner">
+      <div>
+        <div class="email-text-title">Stay updated</div>
+        <div class="email-text-sub">Get new guides by email.</div>
       </div>
-      <div class="goal-card">
-        <small>GOAL</small>
-        <h4>Lose fat</h4>
-        <p>Supplements are 10%, diet 90%.</p>
-      </div>
-      <div class="goal-card">
-        <small>GOAL</small>
-        <h4>Energy & focus</h4>
-        <p>Safe stimulant usage.</p>
-      </div>
-      <div class="goal-card">
-        <small>GOAL</small>
-        <h4>Health basics</h4>
-        <p>Vitamin D, omega-3.</p>
-      </div>
+      <form class="email-form" id="notify-form">
+        <input
+          class="email-input"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        />
+        <button class="btn-email" type="submit">Notify me</button>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <h2>Program Templates</h2>
-  <div class="programs">
-    <div class="program-card">
-      <h4>Beginner Full Body</h4>
-      <p>Simple full-body routine.</p>
-      <button type="button">View plan</button>
-    </div>
-    <div class="program-card">
-      <h4>Push / Pull / Legs</h4>
-      <p>Classic split routine.</p>
-      <button type="button">View plan</button>
-    </div>
-    <div class="program-card">
-      <h4>Lean Bulk Routine</h4>
-      <p>Gain muscle without fat.</p>
-      <button type="button">View plan</button>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <strong>Stay updated</strong><br>
-      Get new guides by email.
-    </div>
-    <div>
-      <input type="email" placeholder="you@example.com">
-      <button type="button">Notify me</button>
-    </div>
-  </div>
-</footer>
-
+  <!-- Küçük JS: Notify me butonu gerçekten “çalışsın” diye -->
+  <script>
+    document.getElementById("notify-form").addEventListener("submit", function (e) {
+      e.preventDefault(); // sayfanın yenilenmesini engelle
+      const email = this.email.value.trim();
+      if (!email) return;
+      alert("Thanks! We'll notify: " + email);
+      this.reset();
+    });
+  </script>
 </body>
 </html>
