@@ -562,6 +562,42 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(32, 201, 151, 0.35);
 }
+/* Modern button */
+button,
+.template-btn,
+.hero-btn {
+  background: linear-gradient(135deg, #2563eb, #22c55e);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover,
+.template-btn:hover,
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.goal-card h4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfeff;
+  color: #0f766e;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.goal-icon {
+  font-size: 16px;
+}
 
   </style>
 </head>
@@ -631,12 +667,18 @@ body {
             <div class="goal-title">Lose fat</div>
             <div class="goal-text">Why supplements are 10% of the result and diet is 90%.</div>
           </div>
+<h4><span class="goal-icon">🔥</span> Lose fat</h4>
+<h4><span class="goal-icon">⚡</span> Energy & focus</h4>
+<h4><span class="goal-icon">🛡️</span> Health basics</h4>
 
           <div class="goal-card">
             <div class="goal-label">Goal</div>
             <div class="goal-title">Energy & focus</div>
             <div class="goal-text">Caffeine, pre-workout & safe stim usage for students and lifters.</div>
           </div>
+<h4><span class="goal-icon">🔥</span> Lose fat</h4>
+<h4><span class="goal-icon">⚡</span> Energy & focus</h4>
+<h4><span class="goal-icon">🛡️</span> Health basics</h4>
 
           <div class="goal-card">
             <div class="goal-label">Goal</div>
@@ -644,6 +686,9 @@ body {
             <div class="goal-text">Omega-3, vitamin D, multivitamin – when it actually makes sense.</div>
           </div>
         </div>
+<h4><span class="goal-icon">🔥</span> Lose fat</h4>
+<h4><span class="goal-icon">⚡</span> Energy & focus</h4>
+<h4><span class="goal-icon">🛡️</span> Health basics</h4>
 
         <div class="hero-right-footer">
           Soon: a quiz that shows which supplements are worth it for you in under 60 seconds.
