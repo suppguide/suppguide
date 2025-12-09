@@ -165,21 +165,71 @@ header{
   .info-grid,.cards{grid-template-columns:1fr}
   .hero h1{font-size:40px}
 }
+input::placeholder {
+  color: #94a3b8;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">SuppGuide</div>
+<div class="nav">
+
+  <!-- LOGO -->
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#6366f1,#2563eb);
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-weight:800;
+      font-size:18px;
+    ">S</div>
+
     <div>
+      <div style="font-weight:800;font-size:18px;">SuppGuide</div>
+      <div style="font-size:12px;color:#64748b;">Smart supplement guide</div>
+    </div>
+  </div>
+
+  <!-- SEARCH + MENU -->
+  <div style="display:flex;align-items:center;gap:24px;">
+
+    <!-- SEARCH -->
+    <input type="text" placeholder="Search supplements..."
+      style="
+        padding:10px 18px;
+        border-radius:999px;
+        border:1px solid #cbd5f5;
+        background:white;
+        font-size:13px;
+        width:220px;
+      "
+    >
+
+    <!-- MENU -->
+    <nav>
       <a href="index.html">Home</a>
       <a href="protein.html" class="active">Protein</a>
       <a href="creatine.html">Creatine</a>
       <a href="goals.html">Goals</a>
-    </div>
+    </nav>
+
   </div>
+</div>
+
 </header>
 
 <section class="hero">
