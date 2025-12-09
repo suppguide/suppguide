@@ -11,36 +11,26 @@
       background: #f5f7ff;
       color: #0f172a;
     }
-
     header {
-      padding: 24px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    header strong {
+      padding: 20px;
       font-size: 20px;
+      font-weight: bold;
     }
-
     main {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
-      padding: 40px 24px;
+      padding: 40px 20px;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 40px;
     }
-
     h1 {
       font-size: 40px;
-      margin-bottom: 16px;
     }
-
     p {
       color: #475569;
       line-height: 1.5;
     }
-
     .pill {
       display: inline-block;
       background: #e2e8f0;
@@ -48,67 +38,30 @@
       border-radius: 999px;
       font-size: 12px;
       margin-right: 6px;
-      margin-top: 10px;
     }
-
     .box {
       background: #0f172a;
-      color: #fff;
-      border-radius: 20px;
+      color: white;
       padding: 24px;
-    }
-
-    .box h3 {
-      margin-top: 0;
-    }
-
-    .box p {
-      color: #cbd5f5;
-      font-size: 14px;
-    }
-
-    ul {
-      padding-left: 18px;
-    }
-
-    .cards {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: #111827;
-      color: #fff;
-      padding: 20px;
       border-radius: 16px;
     }
-
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
+    .box p {
+      color: #cbd5f5;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <strong>SuppGuide</strong>
-</header>
+<header>SuppGuide</header>
 
 <main>
   <section>
     <h1>Find the right protein powder<br>for your body & budget.</h1>
-
     <p>
       We rate protein powders by protein content, ingredients and value,
       so you don’t waste money on overhyped supplements.
     </p>
-
     <span class="pill">Beginner friendly</span>
     <span class="pill">No fake promises</span>
     <span class="pill">Evidence based</span>
@@ -116,41 +69,10 @@
 
   <section class="box">
     <h3>HOW WE RATE PROTEIN</h3>
-    <ul>
-      <li>Protein per serving</li>
-      <li>Ingredient quality</li>
-      <li>Digestibility</li>
-      <li>Price / performance ratio</li>
-    </ul>
-  </section>
-
-  <section class="cards">
-    <div class="card">
-      <h3>Best overall whey</h3>
-      <ul>
-        <li>High protein per serving</li>
-        <li>Low sugar & fat</li>
-        <li>Good value for money</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Budget pick</h3>
-      <ul>
-        <li>Whey concentrate</li>
-        <li>Slightly more carbs & fat</li>
-        <li>Cheaper option</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Plant-based option</h3>
-      <ul>
-        <li>Pea + rice protein blend</li>
-        <li>Lactose free</li>
-        <li>Check protein content</li>
-      </ul>
-    </div>
+    <p>Protein per serving</p>
+    <p>Ingredient quality</p>
+    <p>Digestibility</p>
+    <p>Price / performance ratio</p>
   </section>
 </main>
 
