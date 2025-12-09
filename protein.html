@@ -1,235 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SuppGuide – Protein</title>
+<meta charset="UTF-8">
+<title>SuppGuide – Protein</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: #f5f7ff;
-      color: #0f172a;
-    }
-
-    /* NAVBAR */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 40px;
-      font-weight: 700;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #64748b;
-      font-size: 14px;
-      margin-left: 20px;
-    }
-
-    nav a:hover {
-      color: #0f172a;
-    }
-
-    nav a.active {
-      color: #0f172a;
-      font-weight: 600;
-    }
-
-    /* HERO */
-    main {
-  max-width: 1400px; /* DAHA GENİŞ */
-  margin: auto;
-  padding: 60px 24px 40px; /* yan boşluk azaldı */
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 48px;
-    }
-
-    h1 {
-      font-size: 42px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    p {
-      color: #475569;
-      line-height: 1.6;
-    }
-
-    .pills {
-      margin-top: 20px;
-    }
-
-    .pill {
-      display: inline-block;
-      background: #e2e8f0;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-right: 6px;
-    }
-
-    /* RATE BOX */
-    .rate-box {
-      background: linear-gradient(180deg,#020617,#020617);
-      border-radius: 22px;
-      padding: 28px;
-      color: white;
-      box-shadow: 0 24px 50px rgba(2,6,23,.6);
-    }
-
-    .rate-box h3 {
-      margin-top: 0;
-      margin-bottom: 18px;
-      font-size: 16px;
-      letter-spacing: .06em;
-    }
-
-    .rate-box p {
-      color: #cbd5f5;
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
-    /* SECTION */
-.section {
-  max-width: 1400px;
-  margin: 70px auto;
-  padding: 0 24px;
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#f2f5ff,#eef2ff 60%,#e9edff);
+  color:#0f172a;
 }
 
+/* NAVBAR */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(14px);
+  background:rgba(240,244,255,.85);
+  border-bottom:1px solid rgba(148,163,184,.25);
+}
+.nav{
+  max-width:1500px;
+  margin:auto;
+  padding:22px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-weight:800;
+  font-size:20px;
+}
+.nav a{
+  text-decoration:none;
+  color:#64748b;
+  margin-left:24px;
+  font-size:14px;
+  font-weight:500;
+}
+.nav a:hover{color:#0f172a}
+.nav a.active{
+  color:#0f172a;
+  font-weight:700;
+}
 
-    .section h2 {
-      margin-bottom: 24px;
-      font-size: 22px;
-    }
+/* HERO */
+.hero{
+  max-width:1500px;
+  margin:auto;
+  padding:80px 32px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.hero h1{
+  font-size:52px;
+  line-height:1.05;
+  letter-spacing:-.03em;
+}
+.hero p{
+  font-size:16px;
+  max-width:560px;
+  color:#475569;
+}
+.badges span{
+  display:inline-block;
+  margin-top:14px;
+  margin-right:8px;
+  padding:8px 16px;
+  border-radius:999px;
+  background:#e2e8f0;
+  font-size:13px;
+  font-weight:500;
+}
 
-    /* CARDS */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 22px;
-    }
+/* RATE BOX */
+.rate{
+  background:linear-gradient(180deg,#020617,#020617);
+  padding:38px;
+  border-radius:28px;
+  color:white;
+  box-shadow:0 40px 80px rgba(2,6,23,.7);
+}
+.rate h3{
+  letter-spacing:.15em;
+  font-size:13px;
+  margin-bottom:22px;
+}
+.rate p{
+  color:#cbd5f5;
+  font-size:15px;
+  margin:12px 0;
+}
 
-    .card {
-      background: linear-gradient(180deg,#020617,#020617);
-      border-radius: 22px;
-      padding: 24px;
-      color: white;
-      box-shadow: 0 22px 44px rgba(2,6,23,.55);
-    }
+/* SECTIONS */
+.section{
+  max-width:1500px;
+  margin:90px auto;
+  padding:0 32px;
+}
+.section h2{
+  font-size:34px;
+  letter-spacing:-.02em;
+}
 
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
+/* INFO GRID */
+.info-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+}
+.info{
+  background:white;
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 30px 70px rgba(15,23,42,.12);
+}
+.info h3{
+  margin-top:0;
+}
+.info p{
+  color:#475569;
+}
 
-    .card li {
-      margin-bottom: 6px;
-    }
+/* PROTEIN CARDS */
+.cards{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+.card{
+  background:linear-gradient(180deg,#020617,#020617);
+  color:white;
+  padding:34px;
+  border-radius:30px;
+  box-shadow:0 40px 90px rgba(2,6,23,.75);
+}
+.card h3{
+  margin-top:0;
+}
+.card li{
+  margin:10px 0;
+}
 
-    .footer-note {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #94a3b8;
-    }
+/* FOOTER NOTE */
+.note{
+  text-align:center;
+  font-size:13px;
+  color:#64748b;
+  margin:80px 0 60px;
+}
 
-    /* MOBILE */
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-        padding: 40px 24px;
-      }
-
-      header {
-        padding: 18px 24px;
-      }
-    }
-  </style>
+/* MOBILE */
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr}
+  .info-grid,.cards{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div>SuppGuide</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#" class="active">Protein</a>
-    <a href="#">Creatine</a>
-    <a href="#">Goals</a>
-  </nav>
+  <div class="nav">
+    <div class="logo">SuppGuide</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="protein.html" class="active">Protein</a>
+      <a href="creatine.html">Creatine</a>
+      <a href="goals.html">Goals</a>
+    </div>
+  </div>
 </header>
 
-<main>
-  <section>
+<section class="hero">
+  <div>
     <h1>Find the right protein powder<br>for your body & budget.</h1>
     <p>
-      We rate protein powders by protein content, ingredients and value,
-      so you don’t waste money on overhyped supplements.
+      Protein supplements are among the most popular products in fitness —
+      and also among the most misleading. SuppGuide breaks down what actually
+      matters so you don’t waste money.
     </p>
-
-    <div class="pills">
-      <span class="pill">Beginner friendly</span>
-      <span class="pill">No fake promises</span>
-      <span class="pill">Evidence based</span>
+    <div class="badges">
+      <span>Beginner friendly</span>
+      <span>No fake promises</span>
+      <span>Evidence based</span>
     </div>
-  </section>
+  </div>
 
-  <section class="rate-box">
+  <div class="rate">
     <h3>HOW WE RATE PROTEIN</h3>
-    <p>Protein per serving</p>
-    <p>Ingredient quality</p>
-    <p>Digestibility</p>
+    <p>Protein per serving (real, not label tricks)</p>
+    <p>Ingredient quality & transparency</p>
+    <p>Digestibility & stomach comfort</p>
     <p>Price / performance ratio</p>
-  </section>
-</main>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What protein does — and what it doesn’t</h2>
+  <div class="info-grid">
+    <div class="info">
+      <h3>Supports muscle growth</h3>
+      <p>Protein provides essential amino acids needed to repair and build muscle
+         when combined with resistance training.</p>
+    </div>
+    <div class="info">
+      <h3>Helps hit daily intake</h3>
+      <p>Shakes are a convenience tool, not magic. They help reach daily protein
+         targets when food intake falls short.</p>
+    </div>
+    <div class="info">
+      <h3>Does NOT replace food</h3>
+      <p>No powder beats whole foods. Quality protein supplements should complement,
+         not replace, a proper diet.</p>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <h2>Our protein short-list</h2>
-
   <div class="cards">
     <div class="card">
       <h3>Best overall whey</h3>
       <ul>
-        <li>High protein per serving</li>
+        <li>High protein per serving (24–27g)</li>
         <li>Low sugar & fat</li>
-        <li>Good price/performance</li>
+        <li>Best price/performance balance</li>
       </ul>
     </div>
-
     <div class="card">
       <h3>Budget option</h3>
       <ul>
         <li>Whey concentrate</li>
         <li>Slightly more carbs & fat</li>
-        <li>Lower cost</li>
+        <li>Lower cost for beginners</li>
       </ul>
     </div>
-
     <div class="card">
       <h3>Plant-based</h3>
       <ul>
         <li>Pea + rice blend</li>
         <li>Lactose-free</li>
-        <li>Check protein content</li>
+        <li>Check protein per serving carefully</li>
       </ul>
     </div>
   </div>
-
-  <div class="footer-note">
-    For informational purposes only.
-  </div>
 </section>
+
+<div class="note">
+For informational purposes only.
+</div>
 
 </body>
 </html>
