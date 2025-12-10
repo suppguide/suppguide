@@ -1,320 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SuppGuide – Creatine</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:radial-gradient(circle at top,#f2f5ff,#eef2ff 60%,#e9edff);
-  color:#0f172a;
-}
-
-/* HEADER */
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter:blur(14px);
-  background:rgba(240,244,255,.9);
-  border-bottom:1px solid rgba(148,163,184,.25);
-}
-.nav{
-  max-width:1500px;
-  margin:auto;
-  padding:22px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.logo-wrap{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo-icon{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#6366f1,#2563eb);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  font-size:18px;
-}
-.logo-title{font-weight:800;font-size:18px;}
-.logo-sub{font-size:12px;color:#64748b;}
-
-nav a{
-  text-decoration:none;
-  color:#64748b;
-  margin-left:22px;
-  font-size:14px;
-  font-weight:500;
-}
-nav a:hover{color:#0f172a}
-nav a.active{
-  color:#0f172a;
-  font-weight:700;
-}
-
-.search{
-  padding:10px 18px;
-  border-radius:999px;
-  border:1px solid #cbd5f5;
-  background:white;
-  font-size:13px;
-  width:220px;
-}
-.search:focus{
-  outline:none;
-  border-color:#6366f1;
-  box-shadow:0 0 0 3px rgba(99,102,241,.15);
-}
-
-/* HERO */
-.hero{
-  max-width:1500px;
-  margin:auto;
-  padding:80px 32px;
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:60px;
-}
-.hero h1{
-  font-size:52px;
-  line-height:1.05;
-  letter-spacing:-.03em;
-}
-.hero p{
-  max-width:560px;
-  color:#475569;
-}
-.badges span{
-  display:inline-block;
-  margin-top:14px;
-  margin-right:8px;
-  padding:8px 16px;
-  border-radius:999px;
-  background:#e2e8f0;
-  font-size:13px;
-}
-
-/* RATE BOX */
-.rate{
-  background:linear-gradient(180deg,#020617,#020617);
-  padding:38px;
-  border-radius:28px;
-  color:white;
-  box-shadow:0 40px 80px rgba(2,6,23,.7);
-}
-.rate h3{
-  letter-spacing:.15em;
-  font-size:13px;
-  margin-bottom:22px;
-}
-.rate p{
-  color:#cbd5f5;
-  font-size:15px;
-  margin:12px 0;
-}
-
-/* SECTIONS */
-.section{
-  max-width:1500px;
-  margin:90px auto;
-  padding:0 32px;
-}
-.section h2{
-  font-size:34px;
-  letter-spacing:-.02em;
-}
-
-/* INFO GRID */
-.info-grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:32px;
-}
-.info{
-  background:white;
-  border-radius:26px;
-  padding:30px;
-  box-shadow:0 30px 70px rgba(15,23,42,.12);
-}
-.info p{color:#475569}
-
-/* CARDS */
-.cards{
-  margin-top:50px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-}
-.card{
-  background:linear-gradient(180deg,#020617,#020617);
-  color:white;
-  padding:34px;
-  border-radius:30px;
-  box-shadow:0 40px 90px rgba(2,6,23,.75);
-}
-.card li{margin:10px 0}
-
-/* FOOTER */
-.note{
-  text-align:center;
-  font-size:13px;
-  color:#64748b;
-  margin:80px 0 60px;
-}
-
-/* MOBILE */
-@media(max-width:1000px){
-  .hero{grid-template-columns:1fr}
-  .info-grid,.cards{grid-template-columns:1fr}
-  .hero h1{font-size:40px}
-}
-nav a.active{
-  color:#0f172a;
-  font-weight:700;
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <title>Creatine Guide – SuppGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="container navbar">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-badge">S</div>
+          <div class="nav-logo-texts">
+            <span class="nav-logo-title">SuppGuide</span>
+            <span class="nav-logo-subtitle">Smart supplement guide</span>
+          </div>
+        </a>
 
-<header>
-  <div class="nav">
-
-    <div class="logo-wrap">
-      <div class="logo-icon">S</div>
-      <div>
-        <div class="logo-title">SuppGuide</div>
-        <div class="logo-sub">Smart supplement guide</div>
+        <nav class="nav-main">
+          <div class="nav-links">
+            <a href="beginner.html" class="nav-link">Start with beginner guide</a>
+            <a href="protein.html" class="nav-link">Protein</a>
+            <a href="creatine.html" class="nav-link active">Creatine</a>
+            <a href="goal-quiz.html" class="nav-link nav-link-quiz">Goal Quiz (Soon)</a>
+          </div>
+          <form class="nav-search" action="#" method="get">
+            <input type="search" name="q" placeholder="Search supplements..." />
+            <span class="nav-search-icon">⌕</span>
+          </form>
+        </nav>
       </div>
-    </div>
+    </header>
 
-    <div style="display:flex;align-items:center;gap:26px;">
-      <input class="search" placeholder="Search supplements...">
-      <nav>
-       <a href="index.html" class="active">Home</a>
-        <a href="protein.html">Protein</a>
-        <a href="creatine.html" class="active">Creatine</a>
-        <a href="goals.html">Goals</a>
-      </nav>
-    </div>
+    <main class="page-main">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-main">
+            <div class="hero-eyebrow">Creatine 101</div>
+            <h1 class="hero-title">Safe creatine use, explained clearly.</h1>
+            <p class="hero-subtitle">
+              What it actually does, who should use it, recommended dosage and
+              how to avoid useless products.
+            </p>
+          </div>
+          <aside class="hero-card">
+            <div class="hero-card-label">Good to know</div>
+            <div class="hero-card-title">Evidence-based supplement.</div>
+            <p class="hero-card-text">
+              We keep the explanations simple but accurate so you can decide
+              confidently if creatine is for you.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
 
-  </div>
-<header>
-  <div class="nav">
-
-    <!-- LOGO -->
-    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0f172a;">
-      <img src="logo.png" alt="SuppGuide logo" style="height:38px;">
-      <span style="font-weight:800;font-size:18px;">SuppGuide</span>
-    </a>
-
-    <!-- SEARCH + MENU -->
-    <div style="display:flex;align-items:center;gap:26px;">
-      <input class="search" placeholder="Search supplements...">
-
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="protein.html">Protein</a>
-        <<a href="creatine.html" class="active">Creatine</a>
-        <a href="goals.html">Goals</a>
-      </nav>
-    </div>
-
-  </div>
-</header>
-
-<section class="hero">
-  <div>
-    <h1>Creatine explained simply —<br>what works and what doesn’t.</h1>
-    <p>
-      Creatine is one of the most researched supplements in the world.
-      SuppGuide cuts through myths and shows who should use it, how, and why.
-    </p>
-    <div class="badges">
-      <span>Beginner safe</span>
-      <span>Evidence based</span>
-      <span>No marketing hype</span>
-    </div>
+    <footer class="site-footer">
+      <div class="container">© <span id="year"></span> SuppGuide.</div>
+    </footer>
   </div>
 
-  <div class="rate">
-    <h3>HOW WE RATE CREATINE</h3>
-    <p>Form (monohydrate vs others)</p>
-    <p>Purity & third-party testing</p>
-    <p>Dosage accuracy</p>
-    <p>Price per daily dose</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>What creatine actually does</h2>
-  <div class="info-grid">
-    <div class="info">
-      <h3>Strength & power</h3>
-      <p>Creatine increases phosphocreatine stores, helping you push more reps
-         and heavier loads during training.</p>
-    </div>
-    <div class="info">
-      <h3>Muscle fullness</h3>
-      <p>Muscles store more water intracellularly, leading to a fuller appearance
-         without being fat gain.</p>
-    </div>
-    <div class="info">
-      <h3>Not magic</h3>
-      <p>Creatine doesn’t work without proper training and nutrition. It enhances,
-         not replaces, effort.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Creatine types we recommend</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Creatine monohydrate</h3>
-      <ul>
-        <li>Most researched & proven</li>
-        <li>Best price/performance</li>
-        <li>3–5 g daily</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Micronized creatine</h3>
-      <ul>
-        <li>Better mixability</li>
-        <li>Same effectiveness</li>
-        <li>Easier digestion for some</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Expensive blends</h3>
-      <ul>
-        <li>Often unnecessary</li>
-        <li>No proven advantage</li>
-        <li>Mostly marketing</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="note">
-For informational purposes only.
-</div>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
