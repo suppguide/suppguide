@@ -4,9 +4,32 @@
   <meta charset="UTF-8" />
   <title>SuppGuide – Smart Supplement Guide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* GENEL */
+    :root {
+      --bg-body: #0b1020;
+      --bg-surface: #050816;
+      --bg-card: #071629;
+      --bg-card-light: #e6fffb;
+      --bg-pill: #f3f5ff;
+      --bg-pill-dark: #0b1020;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59,130,246,0.15);
+      --accent-strong: #111827;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148,163,184,0.4);
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 70px rgba(15,23,42,0.75);
+      --shadow-card: 0 20px 60px rgba(15,23,42,0.75);
+      --transition-fast: 170ms ease-out;
+      --max-width: 1180px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,428 +37,1010 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: #f5f7ff;
-      color: #0f172a;
-      line-height: 1.5;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #020617 36%, #020617 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
-    /* HEADER + NAV */
-    header {
+    button {
+      font-family: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding-inline: 20px;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(240, 244, 255, 0.95);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-      min-height: 64px;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.75), transparent);
+      border-bottom: 1px solid rgba(148,163,184,0.18);
     }
 
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 14px 20px;
+    .navbar-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      padding: 16px 0 14px;
     }
 
-    .nav-left {
-      display: flex;
+    .brand {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
     }
 
-    .logo-circle {
-      width: 32px;
-      height: 32px;
+    .brand-logo {
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 0%, #60a5fa, #1e3a8a);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: white;
       font-weight: 700;
       font-size: 18px;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+      background: radial-gradient(circle at 30% 20%, #60a5fa, #0f172a 55%);
+      color: #e5f0ff;
+      box-shadow: 0 12px 25px rgba(37,99,235,0.45);
     }
 
-    .logo-text {
+    .brand-text-title {
+      font-size: 20px;
       font-weight: 700;
-      font-size: 18px;
-      color: #0f172a;
+      letter-spacing: 0.02em;
     }
 
-    .nav-right {
+    .brand-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .search {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid #cbd5f5;
-      font-size: 13px;
-      min-width: 190px;
-    }
-
-    .search:focus {
-      outline: none;
-      border-color: #6366f1;
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-    }
-
-    nav a {
-      margin-left: 14px;
-      text-decoration: none;
+      gap: 28px;
       font-size: 14px;
-      color: #64748b;
+    }
+
+    .nav-link {
       position: relative;
-      padding-bottom: 2px;
+      color: #e5e7eb;
+      opacity: 0.9;
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
     }
 
-    nav a:first-child {
-      margin-left: 0;
-    }
-
-    nav a:hover {
-      color: #0f172a;
-    }
-
-    nav a.active {
-      color: #0f172a;
-      font-weight: 600;
-    }
-
-    nav a.active::after {
+    .nav-link::after {
       content: "";
       position: absolute;
       left: 0;
-      right: 0;
-      bottom: -3px;
+      bottom: -6px;
+      width: 0;
       height: 2px;
       border-radius: 999px;
-      background: #2563eb;
+      background: linear-gradient(to right, #60a5fa, #a855f7);
+      transition: width 160ms ease-out;
     }
 
-    /* ANA İÇERİK */
-    main {
-      max-width: 1200px;
-      margin: 40px auto 80px auto;
-      padding: 0 20px 40px 20px;
+    .nav-link:hover {
+      opacity: 1;
+      transform: translateY(-1px);
     }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #020617;
+      box-shadow: 0 16px 35px rgba(15,23,42,0.75);
+      font-size: 13px;
+      font-weight: 500;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-pill span.badge {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: #bfdbfe;
+    }
+
+    .nav-pill:hover {
+      transform: translateY(-1px);
+      border-color: rgba(96,165,250,0.9);
+      background: #020617;
+      box-shadow: 0 22px 55px rgba(15,23,42,0.9);
+    }
+
+    /* HERO */
 
     .hero {
+      padding: 32px 0 80px;
+    }
+
+    .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.95fr);
       gap: 40px;
       align-items: center;
-      margin-bottom: 60px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding-top: 26px;
+      }
+      .navbar-inner {
+        gap: 14px;
+      }
+      .nav-links {
+        display: none;
+      }
     }
 
     .eyebrow {
       font-size: 12px;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #64748b;
-      margin-bottom: 10px;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
-    h1 {
-      font-size: 44px;
+    .hero-title {
+      font-size: clamp(34px, 4.1vw, 40px);
       line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(90deg, #60a5fa, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 520px;
       margin-bottom: 18px;
     }
 
-    .hero p {
-      color: #475569;
-      max-width: 420px;
-      margin-bottom: 18px;
-    }
-
-    .pill-row {
+    .tag-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 28px;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      background: #e2e8f0;
-      padding: 6px 12px;
-      border-radius: 999px;
+    .tag-pill {
       font-size: 12px;
-      color: #1e293b;
-    }
-
-    .primary-btn {
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 10px 18px;
+      gap: 6px;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .tag-pill span.dot {
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      background: #2563eb;
-      color: white;
-      font-size: 14px;
+      background: #4ade80;
+    }
+
+    .tag-pill.alt {
+      border-style: dashed;
+    }
+
+    .tag-pill:hover {
+      background: #020617;
+      border-color: rgba(96,165,250,0.9);
+      transform: translateY(-0.5px);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      font-size: 15px;
       font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
-      text-decoration: none;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 20px 50px rgba(37,99,235,0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
     }
 
-    .primary-btn:hover {
-      background: #1d4ed8;
+    .btn-primary span.arrow {
+      font-size: 16px;
+      transform: translateY(1px);
     }
 
-    .secondary-link {
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 24px 65px rgba(37,99,235,0.75);
+    }
+
+    .btn-ghost-link {
       font-size: 14px;
-      margin-left: 10px;
-      color: #2563eb;
-      text-decoration: none;
+      font-weight: 500;
+      color: #bfdbfe;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.9;
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
     }
 
-    .secondary-link:hover {
-      text-decoration: underline;
+    .btn-ghost-link span.arrow {
+      font-size: 16px;
+      transform: translateY(1px);
     }
 
-    /* SAĞDAKİ HEDEF KARTI */
-    .goal-card {
-      background: #020617;
+    .btn-ghost-link:hover {
+      opacity: 1;
+      transform: translateY(-0.5px);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* GOALS PANEL (RIGHT SIDE) */
+
+    .goal-panel {
+      border-radius: 32px;
+      background: radial-gradient(circle at 0% 0%, rgba(59,130,246,0.4), transparent 55%),
+                  radial-gradient(circle at 100% 0%, rgba(236,72,153,0.35), transparent 55%),
+                  #020617;
+      box-shadow: var(--shadow-card);
+      padding: 22px 22px 20px;
+      border: 1px solid rgba(148,163,184,0.4);
       color: #e5e7eb;
-      border-radius: 24px;
-      padding: 24px 22px;
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
     }
 
     .goal-title {
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      font-size: 13px;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 14px;
-    }
-
-    .goal-block-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .goal-block-text {
-      font-size: 13px;
+      letter-spacing: 0.16em;
       color: #cbd5f5;
     }
 
-    /* ALTTAKİ PROGRAM KARTLARI */
-    h2 {
-      font-size: 22px;
-      margin-bottom: 16px;
+    .goal-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 540px) {
+      .goal-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .goal-card {
+      position: relative;
+      border-radius: 18px;
+      background: radial-gradient(circle at 10% 0%, rgba(148,163,255,0.45), transparent 60%),
+                  linear-gradient(to bottom right, rgba(15,23,42,0.96), #020617);
+      padding: 13px 13px 13px;
+      border: 1px solid rgba(148,163,184,0.5);
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        border-color var(--transition-fast),
+        background-position 220ms ease-out;
+    }
+
+    .goal-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(59,130,246,0.32), transparent 60%);
+      opacity: 0;
+      transition: opacity 180ms ease-out;
+      pointer-events: none;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(15,23,42,0.95);
+      border-color: rgba(129,140,248,0.9);
+    }
+
+    .goal-card:hover::before {
+      opacity: 1;
+    }
+
+    .goal-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3ff;
+      margin-bottom: 6px;
+    }
+
+    .goal-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .goal-desc {
+      font-size: 11.5px;
+      color: #cbd5f5;
+      line-height: 1.4;
+      max-width: 210px;
+    }
+
+    .goal-cta {
+      position: absolute;
+      bottom: 10px;
+      right: 11px;
+      font-size: 11px;
+      color: #93c5fd;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.9;
+    }
+
+    .goal-cta span.arrow {
+      font-size: 14px;
+      transform: translateY(1px);
+    }
+
+    .goal-card:hover .goal-cta {
+      opacity: 1;
+    }
+
+    /* PROGRAM TEMPLATES */
+
+    .section {
+      padding: 8px 0 80px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.4), transparent 55%);
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
     }
 
     .program-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-      margin-bottom: 10px;
+      gap: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .program-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .program-card-link {
+      display: block;
+      text-decoration: none;
     }
 
     .program-card {
-      background: #020617;
-      color: #e5e7eb;
       border-radius: 22px;
-      padding: 18px 18px 20px;
-      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.5);
+      background: linear-gradient(135deg, #ecfeff, #e0f7ff);
+      border: 1px solid rgba(45,212,191,0.45);
+      padding: 18px 18px 16px;
+      box-shadow: 0 18px 60px rgba(8,47,73,0.35);
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background 200ms ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.45), transparent 60%);
+      opacity: 0;
+      transition: opacity 200ms ease-out;
+      pointer-events: none;
+    }
+
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 70px rgba(15,23,42,0.7);
+      border-color: rgba(59,130,246,0.8);
+    }
+
+    .program-card:hover::before {
+      opacity: 1;
     }
 
     .program-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
-    .program-level {
+    .program-meta {
       font-size: 11px;
-      color: #a5b4fc;
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0f172a;
+      opacity: 0.7;
+      margin-bottom: 10px;
     }
 
-    .program-card ul {
-      list-style: disc;
-      padding-left: 18px;
+    .program-body {
       font-size: 13px;
-      color: #cbd5f5;
+      line-height: 1.55;
+      margin-bottom: 14px;
+      max-width: 340px;
     }
 
-    .disclaimer {
-      margin-top: 16px;
+    .program-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .program-chip {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.04);
+      border: 1px solid rgba(15,23,42,0.1);
+    }
+
+    .btn-program {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: #020617;
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.65);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .btn-program span.arrow {
+      font-size: 14px;
+      transform: translateY(1px);
+    }
+
+    .program-card:hover .btn-program {
+      background: #020617;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.85);
+    }
+
+    /* FOOTER / EMAIL */
+
+    .footer {
+      border-top: 1px solid rgba(148,163,184,0.3);
+      background: #020617;
+      padding: 26px 0 32px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .footer-left-sub {
       font-size: 12px;
-      color: #64748b;
+      color: var(--text-muted);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
+    .footer-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-input-wrap {
+      position: relative;
+      flex: 1 1 220px;
+      max-width: 320px;
+    }
+
+    .footer-input {
+      width: 100%;
+      padding: 11px 12px 11px 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 13px;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .footer-input::placeholder {
+      color: #6b7280;
+    }
+
+    .footer-input:focus {
+      border-color: rgba(96,165,250,0.95);
+      background: #020617;
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.5);
+    }
+
+    .footer-input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .footer-btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #f9fafb;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 16px 40px rgba(22,163,74,0.55);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .footer-btn span.bell {
+      font-size: 15px;
+    }
+
+    .footer-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 20px 55px rgba(22,163,74,0.7);
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner {
+        align-items: flex-start;
       }
-      .goal-card {
-        order: -1;
+      .footer-form {
+        width: 100%;
       }
-      .nav {
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-      .nav-right {
-        justify-content: flex-start;
+      .footer-input-wrap {
+        max-width: none;
       }
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 32px;
-      }
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
-      .search {
-        min-width: 0;
-        width: 100%;
-      }
-      .nav-right {
-        width: 100%;
-      }
+    /* DUMMY SECTIONS (FOR NAV LINKS) */
+
+    .dummy-section {
+      padding: 40px 0 56px;
+      border-top: 1px solid rgba(31,41,55,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.55), transparent 55%);
+    }
+
+    .dummy-heading {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .dummy-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* ACCESSIBILITY: focus outline */
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid rgba(96,165,250,0.9);
+      outline-offset: 2px;
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="nav">
-      <!-- LOGO -->
-      <a href="index.html" class="nav-left">
-        <div class="logo-circle">S</div>
-        <span class="logo-text">SuppGuide</span>
+<div class="page" id="home">
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#home" class="brand">
+        <div class="brand-logo">S</div>
+        <div>
+          <div class="brand-text-title">SuppGuide</div>
+          <div class="brand-sub">Smart supplement guide</div>
+        </div>
       </a>
 
-      <!-- SEARCH + MENÜ -->
-      <div class="nav-right">
-        <input
-          class="search"
-          type="text"
-          placeholder="Search supplements..."
-        />
-        <nav>
-          <a href="index.html" class="active">Home</a>
-          <a href="protein.html">Protein</a>
-          <a href="creatine.html">Creatine</a>
-          <a href="goals.html">Goals</a>
-        </nav>
-      </div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#guide" class="nav-link">Start with beginner guide</a>
+        <a href="#protein" class="nav-link">Protein</a>
+        <a href="#creatine" class="nav-link">Creatine</a>
+        <a href="#quiz" class="nav-pill">
+          Goal quiz
+          <span class="badge">Soon</span>
+        </a>
+      </nav>
     </div>
   </header>
 
+  <!-- HERO -->
   <main>
-    <section class="hero">
-      <div>
-        <div class="eyebrow">Smart supplement guide</div>
-        <h1>
-          Find the right supplement<br />
-          for your body &amp; budget.
-        </h1>
-        <p>
-          SuppGuide helps beginners understand which supplements are actually
-          useful, which are a waste of money, and where to buy them safely.
-        </p>
-
-        <div class="pill-row">
-          <span class="pill">Protein • Creatine • Pre-workout</span>
-          <span class="pill">Beginner friendly</span>
-          <span class="pill">No fake promises</span>
-        </div>
-
-        <a href="beginner-stack.html" class="primary-btn">
-          Start with beginner guide
-        </a>
-        <a href="protein.html" class="secondary-link">
-          Or see all supplements →
-        </a>
-      </div>
-
-      <aside class="goal-card">
-        <div class="goal-title">Pick your main goal</div>
-
-        <div style="margin-bottom: 16px">
-          <div class="goal-block-title">Build muscle</div>
-          <div class="goal-block-text">
-            Protein + creatine basics, recovery tips, realistic expectations.
-          </div>
-        </div>
-
-        <div style="margin-bottom: 16px">
-          <div class="goal-block-title">Lose fat</div>
-          <div class="goal-block-text">
-            Why supplements are 10% of the result and diet is 90%.
-          </div>
-        </div>
-
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <!-- LEFT -->
         <div>
-          <div class="goal-block-title">Health basics</div>
-          <div class="goal-block-text">
-            Omega-3, vitamin D, multivitamin: when it actually makes sense.
+          <p class="eyebrow">Smart supplement guide</p>
+          <h1 class="hero-title" id="hero-title">
+            Find the right supplement<br />
+            <span class="highlight">for your body &amp; budget.</span>
+          </h1>
+
+          <p class="hero-tagline">
+            SuppGuide helps beginners understand which supplements are actually useful,
+            which are a waste of money, and where to buy them safely.
+          </p>
+
+          <div class="tag-pills">
+            <button class="tag-pill" type="button">
+              <span class="dot"></span>
+              Protein · Creatine · Pre-workout
+            </button>
+            <button class="tag-pill alt" type="button">
+              Beginner friendly
+            </button>
+            <button class="tag-pill alt" type="button">
+              No fake promises
+            </button>
           </div>
+
+          <div class="hero-actions">
+            <a href="#guide">
+              <button class="btn-primary" type="button">
+                Start with beginner guide
+                <span class="arrow">→</span>
+              </button>
+            </a>
+
+            <a href="#all-supplements" class="btn-ghost-link">
+              Or see all supplements
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+
+          <p class="hero-note">
+            No shop, no spam. We only recommend trusted stores. If you buy via our links,
+            some of them may pay us a small commission.
+          </p>
         </div>
-      </aside>
+
+        <!-- RIGHT: GOAL PANEL -->
+        <aside class="goal-panel" aria-label="Pick your main goal">
+          <header class="goal-header">
+            <div class="goal-title">Pick your main goal</div>
+            <div class="goal-badge">3-minute goal quiz</div>
+          </header>
+
+          <div class="goal-grid">
+            <a href="#goal-build-muscle" class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-name">Build muscle</div>
+              <p class="goal-desc">
+                Protein + creatine basics, recovery tips, realistic expectations.
+              </p>
+              <div class="goal-cta">
+                Learn more <span class="arrow">→</span>
+              </div>
+            </a>
+
+            <a href="#goal-lose-fat" class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-name">Lose fat</div>
+              <p class="goal-desc">
+                Why supplements are 10% of the result and diet is 90%.
+              </p>
+              <div class="goal-cta">
+                Learn more <span class="arrow">→</span>
+              </div>
+            </a>
+
+            <a href="#goal-energy-focus" class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-name">Energy &amp; focus</div>
+              <p class="goal-desc">
+                Caffeine, pre-workout &amp; safe stim usage for students and lifters.
+              </p>
+              <div class="goal-cta">
+                Learn more <span class="arrow">→</span>
+              </div>
+            </a>
+
+            <a href="#goal-health-basics" class="goal-card">
+              <div class="goal-label">Goal</div>
+              <div class="goal-name">Health basics</div>
+              <p class="goal-desc">
+                Omega-3, vitamin D, multivitamin – when it actually makes sense.
+              </p>
+              <div class="goal-cta">
+                Learn more <span class="arrow">→</span>
+              </div>
+            </a>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section>
-      <h2>Program templates</h2>
+    <!-- PROGRAM TEMPLATES -->
+    <section class="section" aria-labelledby="programs-title">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-kicker">Program templates</p>
+          <h2 class="section-title" id="programs-title">Train smarter, not harder.</h2>
+        </header>
 
-      <div class="program-grid">
-        <article class="program-card">
-          <div class="program-title">Beginner full body</div>
-          <div class="program-level">Level: Beginner</div>
-          <ul>
-            <li>3x/week full-body routine</li>
-            <li>Focus on form, not on crazy volume</li>
-            <li>Pairs perfectly with basic protein + creatine stack</li>
-          </ul>
-        </article>
+        <div class="program-grid">
+          <a href="#plan-beginner-full-body" class="program-card-link">
+            <article class="program-card">
+              <header>
+                <h3 class="program-title">Beginner Full Body</h3>
+                <div class="program-meta">Level: Beginner</div>
+              </header>
+              <p class="program-body">
+                Simple full-body routine. Train three days per week with balanced
+                volume and easy progression.
+              </p>
+              <footer class="program-footer">
+                <span class="program-chip">3 days · 6–8 weeks</span>
+                <button class="btn-program" type="button">
+                  View plan
+                  <span class="arrow">→</span>
+                </button>
+              </footer>
+            </article>
+          </a>
 
-        <article class="program-card">
-          <div class="program-title">Push / Pull / Legs</div>
-          <div class="program-level">Level: Intermediate</div>
-          <ul>
-            <li>Classic PPL split for lifters</li>
-            <li>More volume, more accessories</li>
-            <li>Needs proper recovery &amp; sleep</li>
-          </ul>
-        </article>
+          <a href="#plan-ppl" class="program-card-link">
+            <article class="program-card">
+              <header>
+                <h3 class="program-title">Push / Pull / Legs</h3>
+                <div class="program-meta">Level: Intermediate</div>
+              </header>
+              <p class="program-body">
+                Classic push / pull / legs split for intermediate lifters who want
+                more weekly volume and structure.
+              </p>
+              <footer class="program-footer">
+                <span class="program-chip">4–6 days · Flexible</span>
+                <button class="btn-program" type="button">
+                  View plan
+                  <span class="arrow">→</span>
+                </button>
+              </footer>
+            </article>
+          </a>
 
-        <article class="program-card">
-          <div class="program-title">Lean bulk routine</div>
-          <div class="program-level">Level: Advanced</div>
-          <ul>
-            <li>For lifters who already know the basics</li>
-            <li>Focus on slow, controlled weight gain</li>
-            <li>Supplement plan stays simple &amp; effective</li>
-          </ul>
-        </article>
+          <a href="#plan-lean-bulk" class="program-card-link">
+            <article class="program-card">
+              <header>
+                <h3 class="program-title">Lean Bulk Routine</h3>
+                <div class="program-meta">Level: Advanced</div>
+              </header>
+              <p class="program-body">
+                Smart lean bulking plan focused on gaining muscle while controlling
+                unnecessary fat gain.
+              </p>
+              <footer class="program-footer">
+                <span class="program-chip">4+ days · Strength focus</span>
+                <button class="btn-program" type="button">
+                  View plan
+                  <span class="arrow">→</span>
+                </button>
+              </footer>
+            </article>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <p class="disclaimer">For informational purposes only.</p>
+    <!-- DUMMY TARGET SECTIONS FOR NAV (İleride gerçek sayfalara bağlarsın) -->
+    <section id="guide" class="dummy-section">
+      <div class="container">
+        <h2 class="dummy-heading">Beginner Guide</h2>
+        <p class="dummy-text">
+          This is a placeholder section for your beginner guide. Later you can replace
+          this with a full page explaining gym basics, diet, and how to use supplements
+          safely as a beginner.
+        </p>
+      </div>
+    </section>
+
+    <section id="protein" class="dummy-section">
+      <div class="container">
+        <h2 class="dummy-heading">Protein Guide</h2>
+        <p class="dummy-text">
+          Explain different protein types (whey, isolate, casein, plant-based), how much
+          to take per day, and which brands you trust.
+        </p>
+      </div>
+    </section>
+
+    <section id="creatine" class="dummy-section">
+      <div class="container">
+        <h2 class="dummy-heading">Creatine Guide</h2>
+        <p class="dummy-text">
+          Cover creatine monohydrate basics, daily dosage, loading (optional),
+          and answer common questions about water retention, safety, and timing.
+        </p>
+      </div>
+    </section>
+
+    <section id="all-supplements" class="dummy-section">
+      <div class="container">
+        <h2 class="dummy-heading">All Supplements</h2>
+        <p class="dummy-text">
+          Future place for a full list of recommended supplements with filters for goal,
+          budget and experience level.
+        </p>
+      </div>
+    </section>
+
+    <section id="quiz" class="dummy-section">
+      <div class="container">
+        <h2 class="dummy-heading">Goal Quiz (Coming soon)</h2>
+        <p class="dummy-text">
+          Here you can later embed a quiz (JavaScript form) that asks about training goal,
+          budget and experience, then suggests a stack and a training template.
+        </p>
+      </div>
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-left-title">Stay updated</div>
+        <div class="footer-left-sub">
+          Get new guides by email. No spam, unsubscribe anytime.
+        </div>
+      </div>
+
+      <form class="footer-form" action="#" method="post" onsubmit="return false;">
+        <div class="footer-input-wrap">
+          <span class="footer-input-icon">@</span>
+          <input
+            class="footer-input"
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <button class="footer-btn" type="submit">
+          <span class="bell">🔔</span>
+          Notify me
+        </button>
+      </form>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
